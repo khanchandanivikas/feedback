@@ -11,7 +11,7 @@ const Roadmap = () => {
       <div>
         <p>
           <span className="planned">
-            <i class="fas fa-circle"></i>
+            <i className="fas fa-circle"></i>
           </span>{" "}
           Planned
         </p>
@@ -20,7 +20,7 @@ const Roadmap = () => {
       <div>
         <p>
           <span className="progress">
-            <i class="fas fa-circle"></i>
+            <i className="fas fa-circle"></i>
           </span>{" "}
           In-progress
         </p>
@@ -29,7 +29,7 @@ const Roadmap = () => {
       <div>
         <p>
           <span className="live">
-            <i class="fas fa-circle"></i>
+            <i className="fas fa-circle"></i>
           </span>{" "}
           Live
         </p>

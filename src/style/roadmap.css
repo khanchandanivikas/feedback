@@ -14,10 +14,6 @@
     margin-bottom: 1rem;
 }
 
-.roadmap-container div:nth-of-type(1) h3 {
-    color: #3a4374;
-}
-
 .fa-circle {
     font-size: 0.5rem;
     margin-right: 0.8rem;

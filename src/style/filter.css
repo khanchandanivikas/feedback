@@ -1,0 +1,49 @@
+.filter-container {
+    background-color: #373f68;
+    width: 100%;
+    color: #fff;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.filter-container h3 {
+    color: #fff;
+}
+
+.filter-container div button {
+    background-color: #ad1fea;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all .3s ease;
+}
+
+.filter-container div button:hover {
+    background-color: #b253db;
+}
+
+.sort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sort p {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.sort select {
+    background-color: #373f68;
+    color: #fff;
+}
+
+.fa-lightbulb {
+    margin-right: 0.7rem;
+}

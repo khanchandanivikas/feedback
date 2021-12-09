@@ -4,7 +4,7 @@ import "../style/profile.css";
 const Profile = () => {
   return (
     <div className="profile-box">
-      <i class="fas fa-user"></i>
+      <i className="fas fa-user"></i>
       <div>
         <h3>Frontend Mentor</h3>
         <p>Feedback Board</p>

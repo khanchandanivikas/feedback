@@ -1,0 +1,75 @@
+.feedback-single {
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2rem;
+    transition: all 0.4s ease;
+    margin-bottom: 1.5rem;
+}
+
+.feedback-single:hover {
+    transform: scale(1.015);
+    cursor: pointer;
+}
+
+.feedback-upvote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f4ff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-upvote:hover {
+    background-color: #aab5f5;
+}
+
+.upvote {
+    color: #647196;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background-color: #f2f4ff;
+    transition: all 0.3s ease;
+}
+
+.feedback-upvote:hover .upvote {
+    background-color: #aab5f5;
+}
+
+.fa-chevron-up {
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    color: #4661e6;
+}
+
+.feedback-single div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.feedback-single div:nth-child(2) p:nth-child(2) {
+    margin-top: 0.8rem;
+}
+
+.feedback-single div:nth-child(2) button {
+    margin-top: 0.8rem;
+    background-color: #f2f4ff;
+    color: #4661e6;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.fa-comment {
+    margin-right: 1rem;
+    color: #CDD2EE;
+    font-size: 1.2rem;
+}
