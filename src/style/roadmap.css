@@ -1,0 +1,50 @@
+.roadmap-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.roadmap-container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roadmap-container div:nth-of-type(1) {
+    margin-bottom: 1rem;
+}
+
+.roadmap-container div:nth-of-type(1) h3 {
+    color: #3a4374;
+}
+
+.fa-circle {
+    font-size: 0.5rem;
+    margin-right: 0.8rem;
+}
+
+.planned {
+   color: #f49f85;
+}
+
+.progress {
+    color: #ad1fea;
+}
+
+.live {
+    color: #62bcfa;
+}
+
+.roadmap-container div p:nth-child(2) {
+    color: #3a4374;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.roadmap-container div:nth-of-type(1) p {
+    color: #4661e6;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+}

@@ -1,0 +1,35 @@
+.categories-container {
+    background-color: #fff;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.categories-container button:nth-of-type(4) {
+    grid-column: span 2;
+}
+
+.categories-container button:nth-of-type(1) {
+    background-color: #4661e6;
+    color: #fff;
+}
+
+.categories-container button {
+    border: none;
+    outline: none;
+    background-color: #f2f4ff;
+    color: #4661e6;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.categories-container button:hover {
+    background-color: #aab5f5;
+    color: #fff;
+}

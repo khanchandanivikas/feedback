@@ -1,0 +1,10 @@
+.dashboard-container {
+    padding: 3rem 20%;
+}
+
+.dashboard-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
