@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Feedbacks from './pages/Feedbacks';
+import AddFeedback from './pages/AddFeedback';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Feedbacks />
+          </Route>
+          <Route path="/addFeedback">
+            <AddFeedback />
           </Route>
           <Redirect to="/" />
         </Switch>

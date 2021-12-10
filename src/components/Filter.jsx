@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/filter.css";
 
 const Filter = () => {
@@ -17,7 +18,9 @@ const Filter = () => {
         </select>
       </div>
       <div>
-        <button>+ Add Feedback</button>
+        <Link to="/addFeedback">
+          <button>+ Add Feedback</button>
+        </Link>
       </div>
     </div>
   );

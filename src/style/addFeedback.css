@@ -1,0 +1,123 @@
+.addFeedback-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.addFeedback-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 5rem 2rem 5rem 2rem;
+}
+
+.back {
+    margin-bottom: 3rem;
+    cursor: pointer;
+}
+
+.back p {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.back p:hover .fa-chevron-left {
+    font-size: 0.9rem;
+}
+
+.fa-chevron-left {
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #4158D0;
+    transition: all 0.3s ease;
+}
+
+.addFeedback-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.addFeedback-form h1 {
+    background-color: #4158D0;
+    background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 100%);
+    color: #fff;
+    border-radius: 50%;
+    padding: 1px 0px 7px 0px;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -25px;
+    margin-left: 10px;
+}
+
+.addFeedback-form h2 {
+    margin-top: 1rem;
+}
+
+.addFeedback-form label {
+    color: #3a4374;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+.addFeedback-form input,
+.addFeedback-form select {
+    background-color: #F7F8FD;
+    padding: 15px;
+    outline: none;
+    border: none;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+
+.addFeedback-form input:nth-of-type(2) {
+    height: 10rem;
+}
+
+.addFeedback-form input:focus,
+.addFeedback-form select:focus {
+    outline: solid 1px #4661e6;
+}
+
+.addFeedback-form p {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.addFeedback-form div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.btn-cancel {
+ background-color: #4661e6;
+ color: #fff;
+ padding: 15px 18px;
+ border-radius: 10px;
+ transition: all .3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #667be2;
+}
+
+.btn-add {
+    background-color: #ad1fea;
+    color: #fff;
+    padding: 15px 18px;
+    border-radius: 10px;
+    margin-left: 1.2rem;
+    transition: all .3s ease;
+}
+
+.btn-add:hover {
+    background-color: #b253db;
+}
