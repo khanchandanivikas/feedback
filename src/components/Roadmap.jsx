@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/roadmap.css";
 
 const Roadmap = () => {
@@ -6,7 +7,9 @@ const Roadmap = () => {
     <div className="roadmap-container">
       <div>
         <h3>Roadmap</h3>
-        <p>View</p>
+        <Link to="roadmap">
+          <p>View</p>
+        </Link>
       </div>
       <div>
         <p>

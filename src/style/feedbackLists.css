@@ -12,7 +12,6 @@
 
 .feedback-single:hover {
     transform: scale(1.015);
-    cursor: pointer;
 }
 
 .feedback-upvote {
@@ -66,6 +65,10 @@
     padding: 0.5rem 1rem;
     border-radius: 10px;
     font-weight: 600;
+}
+
+.link {
+    cursor: pointer;
 }
 
 .fa-comment {
