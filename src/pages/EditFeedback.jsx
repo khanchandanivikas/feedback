@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../style/addFeedback.css";
+import "../style/editFeedback.css";
 
-const AddFeedback = () => {
+const EditFeedback = () => {
   return (
-    <div className="addFeedback-wrapper">
-      <div className="addFeedback-container">
+    <div className="editFeedback-wrapper">
+      <div className="editFeedback-container">
         <div className="back">
           <Link to="/">
             <p>
@@ -13,9 +13,9 @@ const AddFeedback = () => {
             </p>
           </Link>
         </div>
-        <form action="" className="addFeedback-form">
-          <h1>+</h1>
-          <h2>Create New Feedback</h2>
+        <form action="" className="editFeedback-form">
+          <h1><i class="fas fa-pen-nib"></i></h1>
+          <h2>Editing 'Add tags for solutions'</h2>
           <label htmlFor="title">Feedback Title</label>
           <p>Add a short, descriptive headline</p>
           <input type="text" name="title" />
@@ -27,6 +27,15 @@ const AddFeedback = () => {
             <option value="enhancement">Enhancement</option>
             <option value="bug">Bug</option>
             <option value="feature">Feature</option>
+          </select>
+          <label htmlFor="status">Update Status</label>
+          <p>Change feature state</p>
+          <select name="status">
+            <option value="suggestion">Suggestion</option>
+            <option value="planned">Planned</option>
+            <option value="enhancement">Enhancement</option>
+            <option value="progress">In-Progress</option>
+            <option value="live">Live</option>
           </select>
           <label htmlFor="details">Feedback Details</label>
           <p>
@@ -44,4 +53,4 @@ const AddFeedback = () => {
   );
 };
 
-export default AddFeedback;
+export default EditFeedback;

@@ -12,7 +12,7 @@ const Comments = () => {
               <i class="fas fa-chevron-left"></i>Go Back
             </p>
           </Link>
-          <Link to="/">
+          <Link to="editFeedback">
             <button className="btn-cancel">Edit Feedback</button>
           </Link>
         </div>

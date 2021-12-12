@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Feedbacks from './pages/Feedbacks';
 import AddFeedback from './pages/AddFeedback';
+import EditFeedback from './pages/EditFeedback';
 import Comments from './pages/Comments';
 import RoadmapList from './pages/RoadmapList';
 
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/addFeedback">
             <AddFeedback />
+          </Route>
+          <Route path="/editFeedback">
+            <EditFeedback />
           </Route>
           <Route path="/comments">
             <Comments />

@@ -1,9 +1,9 @@
-.addFeedback-wrapper {
+.editFeedback-wrapper {
     display: flex;
     justify-content: center;
 }
 
-.addFeedback-container {
+.editFeedback-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -32,7 +32,7 @@
     transition: all 0.3s ease;
 }
 
-.addFeedback-form {
+.editFeedback-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -41,12 +41,13 @@
     padding: 0 2rem 2rem 2rem;
 }
 
-.addFeedback-form h1 {
+.editFeedback-form h1 {
     background-color: #4158D0;
     background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 100%);
     color: #fff;
+    font-size: 1.5rem;
     border-radius: 50%;
-    padding: 1px 27px 7px 27px;
+    padding: 15px 27px 15px 27px;
     width: 10%;
     display: flex;
     justify-content: center;
@@ -55,20 +56,20 @@
     margin-left: 10px;
 }
 
-.addFeedback-form h2 {
+.editFeedback-form h2 {
     margin-top: 1rem;
 }
 
-.addFeedback-form label {
+.editFeedback-form label {
     color: #3a4374;
     font-weight: 600;
     font-size: 0.9rem;
     margin-top: 2rem;
 }
 
-.addFeedback-form input,
-.addFeedback-form select,
-.addFeedback-form textarea {
+.editFeedback-form input,
+.editFeedback-form select,
+.editFeedback-form textarea {
     background-color: #ebecf7;
     padding: 15px;
     outline: transparent;
@@ -78,22 +79,22 @@
     transition: all 0.5s ease;
 }
 
-.addFeedback-form input:nth-of-type(2) {
+.editFeedback-form input:nth-of-type(2) {
     height: 10rem;
 }
 
-.addFeedback-form input:focus,
-.addFeedback-form select:focus,
-.addFeedback-form textarea:focus {
+.editFeedback-form input:focus,
+.editFeedback-form select:focus,
+.editFeedback-form textarea:focus {
     outline: solid 1px #4661e6;
 }
 
-.addFeedback-form p {
+.editFeedback-form p {
     font-size: 0.9rem;
     margin-top: 5px;
 }
 
-.addFeedback-form div {
+.editFeedback-form div {
     display: flex;
     justify-content: flex-end;
     align-items: center;
