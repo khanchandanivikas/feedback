@@ -94,19 +94,24 @@
     margin-top: 5px;
 }
 
-.editFeedback-form div {
+.buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
 }
 
-.btn-cancel {
-    background-color: #4661e6;
+.btn-cancel,
+.btn-add,
+.btn-delete {
     color: #fff;
     padding: 15px 18px;
     border-radius: 10px;
     transition: all .3s ease;
+}
+
+.btn-cancel {
+    background-color: #4661e6;
 }
 
 .btn-cancel:hover {
@@ -115,13 +120,16 @@
 
 .btn-add {
     background-color: #ad1fea;
-    color: #fff;
-    padding: 15px 18px;
-    border-radius: 10px;
-    margin-left: 1.2rem;
-    transition: all .3s ease;
 }
 
 .btn-add:hover {
     background-color: #b253db;
+}
+
+.btn-delete {
+    background-color: #d73737;
+}
+
+.btn-delete:hover {
+    background-color: #d84e4e;
 }

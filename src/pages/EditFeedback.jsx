@@ -14,7 +14,9 @@ const EditFeedback = () => {
           </Link>
         </div>
         <form action="" className="editFeedback-form">
-          <h1><i class="fas fa-pen-nib"></i></h1>
+          <h1>
+            <i class="fas fa-pen-nib"></i>
+          </h1>
           <h2>Editing 'Add tags for solutions'</h2>
           <label htmlFor="title">Feedback Title</label>
           <p>Add a short, descriptive headline</p>
@@ -43,9 +45,12 @@ const EditFeedback = () => {
             etc.
           </p>
           <textarea cols="30" rows="10"></textarea>
-          <div>
-            <button className="btn-cancel">Cancel</button>
-            <button className="btn-add">Add Feedback</button>
+          <div className="buttons">
+            <button className="btn-delete">Delete</button>
+            <div>
+              <button className="btn-cancel">Cancel</button>
+              <button className="btn-add">Add Feedback</button>
+            </div>
           </div>
         </form>
       </div>

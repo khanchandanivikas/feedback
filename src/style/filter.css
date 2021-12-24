@@ -14,7 +14,7 @@
     color: #fff;
 }
 
-.filter-container div button {
+.btn-add-feedback {
     background-color: #ad1fea;
     padding: 0.8rem 1.2rem;
     border-radius: 10px;
@@ -24,7 +24,7 @@
     transition: all .3s ease;
 }
 
-.filter-container div button:hover {
+.btn-add-feedback:hover {
     background-color: #b253db;
 }
 

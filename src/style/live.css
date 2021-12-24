@@ -1,0 +1,72 @@
+.live-task {
+    background-color: #fff;
+    margin: 1.5rem 0;
+    border-top: solid 5px #62BCFA;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.live-task p:nth-child(1) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.live-task p .fa-circle {
+    color: #62BCFA;
+}
+
+.live-task h5 {
+    margin: 1rem 0;
+}
+
+.live-task p:nth-child(3) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.live-task button {
+    background-color: #f2f4ff;
+    color: #4661e6;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.feedback-upvote-roadmap {
+    background-color: #f2f4ff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-upvote-roadmap:hover {
+    background-color: #aab5f5;
+}
+
+.feedback-upvote-roadmap:hover .upvote {
+    background-color: #aab5f5;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.stats p:nth-child(1) {
+    background-color: #aab5f5;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    padding-bottom: 7px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}

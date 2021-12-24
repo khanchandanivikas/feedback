@@ -1,0 +1,29 @@
+.roadmapHeader-container {
+    background-color: #373F68;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.roadmapHeader-container div p, h2 {
+    color: #fff;
+}
+
+.roadmapHeader-container div p {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.roadmapHeader-container div p i {
+    color: #fff;
+}
+
+.roadmapHeader-container div h2 {
+    margin-top: 0.5rem;
+}
+
+.roadmapHeader-container div p:hover .fa-chevron-left {
+    font-size: 0.9rem;
+}

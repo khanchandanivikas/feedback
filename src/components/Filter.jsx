@@ -19,7 +19,7 @@ const Filter = () => {
       </div>
       <div>
         <Link to="/addFeedback">
-          <button>+ Add Feedback</button>
+          <button className="btn-add-feedback">+ Add Feedback</button>
         </Link>
       </div>
     </div>
