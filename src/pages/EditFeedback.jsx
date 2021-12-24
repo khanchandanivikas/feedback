@@ -15,7 +15,7 @@ const EditFeedback = () => {
         </div>
         <form action="" className="editFeedback-form">
           <h1>
-            <i class="fas fa-pen-nib"></i>
+            <i className="fas fa-pen-nib"></i>
           </h1>
           <h2>Editing 'Add tags for solutions'</h2>
           <label htmlFor="title">Feedback Title</label>

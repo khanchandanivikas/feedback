@@ -4,6 +4,11 @@
     border-top: solid 5px #F49F85;
     border-radius: 10px;
     padding: 2rem;
+    transition: all 0.4s ease;
+}
+
+.planned-task:hover {
+    transform: scale(1.015);
 }
 
 .planned-task p:nth-child(1) {

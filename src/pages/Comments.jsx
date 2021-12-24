@@ -5,11 +5,11 @@ import "../style/comments.css";
 const Comments = () => {
   return (
     <div className="comments-container">
-      <div className="addFeedback-container">
+      <div>
         <div className="goBack">
           <Link to="/">
             <p>
-              <i class="fas fa-chevron-left"></i>Go Back
+              <i className="fas fa-chevron-left"></i>Go Back
             </p>
           </Link>
           <Link to="editFeedback">

@@ -75,3 +75,30 @@
     color: #CDD2EE;
     font-size: 1.2rem;
 }
+
+.fa-chevron-up {
+    margin-right: 0.5rem;
+}
+
+@media only screen and (max-width: 671px) {
+    .feedback-single {
+        flex-direction: column;
+    }
+
+    .feedback-single div:nth-child(1) {
+        order: 1;
+    }
+
+    .feedback-single div:nth-child(3) {
+        order: 2;
+    }
+
+    .feedback-upvote {
+        margin-top: 1rem;
+    }
+
+    .feedback-single div:nth-child(3) {
+        margin-left: 80%;
+        margin-top: -2.5rem;
+    }
+}

@@ -8,3 +8,33 @@
     gap: 2rem;
 }
 
+@media only screen and (max-width: 1024px) {
+    .dashboard-container {
+        padding: 3rem 10%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard-container {
+        padding: 3rem 1rem;
+    }
+
+    .dashboard-header {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-header div:nth-child(1) {
+        grid-column: span 2;
+    }
+}
+
+@media only screen and (max-width: 481px) {
+    .dashboard-header {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .dashboard-header div:nth-child(1) {
+        grid-column: span 1;
+    }
+}

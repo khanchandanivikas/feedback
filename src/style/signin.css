@@ -1,13 +1,14 @@
-.editFeedback-wrapper {
+.signin-wrapper {
     display: flex;
     justify-content: center;
 }
 
-.editFeedback-container {
+.signin-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     margin: 5rem 1rem;
+    min-width: 40%;
 }
 
 .back {
@@ -32,7 +33,7 @@
     transition: all 0.3s ease;
 }
 
-.editFeedback-form {
+.signin-form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -41,13 +42,12 @@
     padding: 0 2rem 2rem 2rem;
 }
 
-.editFeedback-form h1 {
+.signin-form h1 {
     background-color: #4158D0;
     background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 100%);
     color: #fff;
-    font-size: 1.5rem;
     border-radius: 50%;
-    padding: 15px 27px 15px 27px;
+    padding: 1px 27px 7px 27px;
     width: 10%;
     display: flex;
     justify-content: center;
@@ -56,20 +56,21 @@
     margin-left: 10px;
 }
 
-.editFeedback-form h2 {
+.signin-form h2 {
     margin-top: 1rem;
+    color: #3a4374;
 }
 
-.editFeedback-form label {
+.signin-form label {
     color: #3a4374;
     font-weight: 600;
     font-size: 0.9rem;
     margin-top: 2rem;
 }
 
-.editFeedback-form input,
-.editFeedback-form select,
-.editFeedback-form textarea {
+.signin-form input,
+.signin-form select,
+.signin-form textarea {
     background-color: #ebecf7;
     padding: 15px;
     outline: transparent;
@@ -79,39 +80,30 @@
     transition: all 0.5s ease;
 }
 
-.editFeedback-form input:nth-of-type(2) {
-    height: 10rem;
-}
-
-.editFeedback-form input:focus,
-.editFeedback-form select:focus,
-.editFeedback-form textarea:focus {
+.signin-form input:focus,
+.signin-form select:focus,
+.signin-form textarea:focus {
     outline: solid 1px #4661e6;
 }
 
-.editFeedback-form p {
+.signin-form p {
     font-size: 0.9rem;
     margin-top: 5px;
 }
 
-.buttons {
+.signin-form div {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-top: 2rem;
 }
 
-.btn-cancel,
-.btn-add,
-.btn-delete {
+.btn-cancel {
+    background-color: #4661e6;
     color: #fff;
     padding: 15px 18px;
     border-radius: 10px;
     transition: all .3s ease;
-}
-
-.btn-cancel {
-    background-color: #4661e6;
 }
 
 .btn-cancel:hover {
@@ -120,18 +112,14 @@
 
 .btn-add {
     background-color: #ad1fea;
+    color: #fff;
+    padding: 15px 18px;
+    border-radius: 10px;
+    transition: all .3s ease;
 }
 
 .btn-add:hover {
     background-color: #b253db;
-}
-
-.btn-delete {
-    background-color: #d73737;
-}
-
-.btn-delete:hover {
-    background-color: #d84e4e;
 }
 
 @media only screen and (max-width: 481px) {
@@ -154,5 +142,9 @@
 
     .btn-cancel {
         margin: 0.5rem 0;
+    }
+
+    .signin-form div {
+      flex-direction: column;
     }
 }

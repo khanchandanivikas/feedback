@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .roadmap-wrapper2 {
@@ -14,4 +15,22 @@
     grid-template-columns: repeat(3, 1fr);
     margin-top: 2rem;
     gap: 0.8rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .roadmap-wrapper2 {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .roadmap-wrapper2 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
 }

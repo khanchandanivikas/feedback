@@ -2,11 +2,16 @@
     padding: 3rem 20%;
 }
 
-.comment-container, .addComment-container {
+.comment-container,
+.addComment-container {
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.comment-container {
+    border-radius: 10px;
 }
 
 .comment-container h3 {
@@ -111,4 +116,27 @@ img {
 
 .addComment-container form div button:hover {
     background-color: #b253db;
+}
+
+@media only screen and (max-width: 1024px) {
+    .comments-container {
+        padding: 3rem 10%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .comments-container {
+        padding: 3rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    img {
+        min-width: 50px;
+        margin-right: 5px;
+    }
+
+    .comments div:nth-child(3) h4 {
+        font-size: 0.8rem;
+    }
 }

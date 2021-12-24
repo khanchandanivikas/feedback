@@ -10,6 +10,7 @@ import AddFeedback from './pages/AddFeedback';
 import EditFeedback from './pages/EditFeedback';
 import Comments from './pages/Comments';
 import RoadmapList from './pages/RoadmapList';
+import Signin from './pages/Signin';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/roadmap">
             <RoadmapList />
+          </Route>
+          <Route path="/signin">
+            <Signin />
           </Route>
           <Redirect to="/" />
         </Switch>

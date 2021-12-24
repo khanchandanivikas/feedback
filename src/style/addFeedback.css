@@ -57,6 +57,7 @@
 
 .addFeedback-form h2 {
     margin-top: 1rem;
+    color: #3a4374;
 }
 
 .addFeedback-form label {
@@ -123,4 +124,31 @@
 
 .btn-add:hover {
     background-color: #b253db;
+}
+
+@media only screen and (max-width: 481px) {
+    .buttons {
+        flex-direction: column;
+    }
+
+    .buttons div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-cancel,
+    .btn-add,
+    .btn-delete {
+        width: 100%;    
+        margin-left: 0;
+    }
+
+    .btn-cancel {
+        margin: 0.5rem 0;
+    }
+
+    .addFeedback-form div {
+      flex-direction: column;
+    }
 }

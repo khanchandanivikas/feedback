@@ -9,6 +9,18 @@
     padding: 2rem;
 }
 
+.profile-box div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-user, .fa-sign-out-alt {
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #fff;
+}
+
 .profile-box div p {
     color: #fff;
 }

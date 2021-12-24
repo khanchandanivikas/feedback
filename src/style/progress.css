@@ -4,6 +4,11 @@
     border-top: solid 5px #AD1FEA;
     border-radius: 10px;
     padding: 2rem;
+    transition: all 0.4s ease;
+}
+
+.progress-task:hover {
+    transform: scale(1.015);
 }
 
 .progress-task p:nth-child(1) {

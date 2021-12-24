@@ -4,6 +4,11 @@
     border-top: solid 5px #62BCFA;
     border-radius: 10px;
     padding: 2rem;
+    transition: all 0.4s ease;
+}
+
+.live-task:hover {
+    transform: scale(1.015);
 }
 
 .live-task p:nth-child(1) {
