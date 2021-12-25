@@ -1,10 +1,27 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../style/addFeedback.css";
 
 const AddFeedback = () => {
+  const animation = {
+    hidden: { opacity: 0, translateY: "600px" },
+    visible: {
+      opacity: 1,
+      translateY: "0px",
+      transition: {
+        duration: 0.3,
+      },
+    }
+  };
+
   return (
-    <div className="addFeedback-wrapper">
+    <motion.div
+      variants={animation}
+      initial="hidden"
+      animate="visible"
+      className="addFeedback-wrapper"
+    >
       <div className="addFeedback-container">
         <div className="back">
           <Link to="/">
@@ -40,7 +57,7 @@ const AddFeedback = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

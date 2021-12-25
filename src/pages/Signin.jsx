@@ -1,10 +1,27 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../style/signin.css";
 
 const Signin = () => {
+  const animation = {
+    hidden: { opacity: 0, translateY: "600px" },
+    visible: {
+      opacity: 1,
+      translateY: "0px",
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
   return (
-    <div className="signin-wrapper">
+    <motion.div
+      variants={animation}
+      initial="hidden"
+      animate="visible"
+      className="signin-wrapper"
+    >
       <div className="signin-container">
         <div className="back">
           <Link to="/">
@@ -34,7 +51,7 @@ const Signin = () => {
           </div>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

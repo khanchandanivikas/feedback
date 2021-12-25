@@ -1,10 +1,26 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../style/comments.css";
 
 const Comments = () => {
+  const animation = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+      },
+    },
+  };
+
   return (
-    <div className="comments-container">
+    <motion.div
+      variants={animation}
+      initial="hidden"
+      animate="visible"
+      className="comments-container"
+    >
       <div>
         <div className="goBack">
           <Link to="/">
@@ -80,14 +96,19 @@ const Comments = () => {
         <div className="addComment-container">
           <h3>Add Comment</h3>
           <form action="">
-            <input type="text" name="" id="" placeholder="Type your comment here" />
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Type your comment here"
+            />
             <div>
               <button>Post Comment</button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
