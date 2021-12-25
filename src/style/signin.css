@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     margin: 5rem 1rem;
-    min-width: 40%;
+    min-width: 42%;
 }
 
 .back {
@@ -120,6 +120,24 @@
 
 .btn-add:hover {
     background-color: #b253db;
+}
+
+@media only screen and (max-width: 1024px) {
+    .signin-container {
+        min-width: 62%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .signin-container {
+        min-width: 82%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .signin-container {
+        min-width: 92%;
+    }
 }
 
 @media only screen and (max-width: 481px) {
