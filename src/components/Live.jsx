@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/live.css";
 
 const Live = () => {
@@ -7,11 +8,13 @@ const Live = () => {
       <h4>Live (2)</h4>
       <p>Ideas prioritized for research</p>
       <div>
-      <div className="live-task">
+        <div className="live-task">
           <p>
             <i className="fas fa-circle"></i> Live
           </p>
-          <h5>More comprehensive reports</h5>
+          <Link to="/comments">
+            <h5>More comprehensive reports</h5>
+          </Link>
           <p>
             It would be great to see a more detailed breakdown of solutions.
           </p>

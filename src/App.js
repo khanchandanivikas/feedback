@@ -11,6 +11,7 @@ import EditFeedback from './pages/EditFeedback';
 import Comments from './pages/Comments';
 import RoadmapList from './pages/RoadmapList';
 import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/signin">
             <Signin />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Redirect to="/" />
         </Switch>

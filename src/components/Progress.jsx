@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/progress.css";
 
 const Progress = () => {
@@ -7,11 +8,13 @@ const Progress = () => {
       <h4>In-Progress (2)</h4>
       <p>Ideas prioritized for research</p>
       <div>
-      <div className="progress-task">
+        <div className="progress-task">
           <p>
             <i className="fas fa-circle"></i> In-Progress
           </p>
-          <h5>More comprehensive reports</h5>
+          <Link to="/comments">
+            <h5>More comprehensive reports</h5>
+          </Link>
           <p>
             It would be great to see a more detailed breakdown of solutions.
           </p>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../style/signin.css";
 
-const Signin = () => {
+const Signup = () => {
   const animation = {
     hidden: { opacity: 0, translateY: "600px" },
     visible: {
@@ -24,7 +24,7 @@ const Signin = () => {
     >
       <div className="signin-container">
         <div className="back">
-          <Link to="/">
+          <Link to="/signin">
             <p>
               <i className="fas fa-chevron-left"></i>Go Back
             </p>
@@ -32,22 +32,22 @@ const Signin = () => {
         </div>
         <form action="" className="signin-form">
           <h1>+</h1>
-          <h2>Sign-in To Your Account</h2>
+          <h2>Sign-up for a new account</h2>
+          <label htmlFor="name">Name</label>
+          <p>Add a name</p>
+          <input type="text" name="title" />
           <label htmlFor="user">User Name</label>
           <p>Add a username</p>
           <input type="text" name="user" />
           <label htmlFor="contraseña">Password</label>
           <p>Include a password</p>
           <input type="password" name="contraseña" />
-          <p>
-            Don't have an account?{" "}
-            <Link to="/signup">
-              <span>Sign-up</span>
-            </Link>
-          </p>
+          <label htmlFor="picture">Avatar</label>
+          <p>Upload an avatar</p>
+          <input type="file" name="picture" />
           <div>
             <button className="btn-cancel">Cancel</button>
-            <button className="btn-add">Sign-in</button>
+            <button className="btn-add">Sign-up</button>
           </div>
         </form>
       </div>
@@ -55,4 +55,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;

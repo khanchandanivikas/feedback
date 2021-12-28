@@ -1,9 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import ReplyBox from "../components/ReplyBox";
+import { useState } from "react";
 import "../style/comments.css";
 
 const Comments = () => {
+  const [reply, setReply] = useState(false);
+  const toggleReply = () => {
+    setReply(!reply);
+  };
+
   const animation = {
     hidden: { opacity: 0 },
     visible: {
@@ -69,9 +76,10 @@ const Comments = () => {
               </p>
             </div>
             <div>
-              <h4>Reply</h4>
+              <h4 onClick={toggleReply}>Reply</h4>
             </div>
           </div>
+          <AnimatePresence>{reply ? <ReplyBox /> : null}</AnimatePresence>
           <div className="comments">
             <div>
               <img
@@ -96,12 +104,7 @@ const Comments = () => {
         <div className="addComment-container">
           <h3>Add Comment</h3>
           <form action="">
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Type your comment here"
-            />
+            <textarea placeholder="Type your comment here" />
             <div>
               <button>Post Comment</button>
             </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/planned.css";
 
 const Planned = () => {
@@ -11,7 +12,9 @@ const Planned = () => {
           <p>
             <i className="fas fa-circle"></i> Planned
           </p>
-          <h5>More comprehensive reports</h5>
+          <Link to="/comments">
+            <h5>More comprehensive reports</h5>
+          </Link>
           <p>
             It would be great to see a more detailed breakdown of solutions.
           </p>

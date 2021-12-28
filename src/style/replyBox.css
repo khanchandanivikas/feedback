@@ -1,0 +1,36 @@
+.reply-form-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: -1rem;
+}
+
+.reply-form textarea {
+    background-color: #ebecf7;
+    padding: 15px;
+    outline: transparent;
+    border: none;
+    margin-top: 1rem;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    width: 100%;
+}
+
+.reply-form textarea:focus {
+    outline: solid 1px #4661e6;
+}
+
+.reply-form div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.reply-form div button {
+    background: transparent;
+    font-size: 1.1rem;
+}
+
+.fa-paper-plane {
+    color: #6c6d6e;
+}

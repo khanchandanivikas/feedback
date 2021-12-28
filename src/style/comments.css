@@ -82,7 +82,7 @@ img {
     width: 100%;
 }
 
-.addComment-container form input {
+.addComment-container form textarea {
     height: 10rem;
     background-color: #ebecf7;
     padding: 15px;
@@ -94,7 +94,7 @@ img {
     width: 100%;
 }
 
-.addComment-container form input:focus {
+.addComment-container form textarea:focus {
     outline: solid 1px #4661e6;
 }
 
