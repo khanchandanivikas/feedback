@@ -57,8 +57,9 @@
         background: transparent;
         color: #3a4374;
         border-bottom: solid 1px transparent;
-        padding: 2rem;
+        padding: 1.3rem;
         transition: all 0.5s ease-in-out;
+        font-size: 0.8rem;
     }
 
     .btn-active-planned,
@@ -66,8 +67,9 @@
     .btn-active-live {
         background: transparent;
         color: #3a4374;
-        padding: 2rem;
+        padding: 1.3rem;
         font-weight: 700;
+        font-size: 0.8rem;
     }
 
     .btn-active-planned {
