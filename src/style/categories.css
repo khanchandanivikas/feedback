@@ -11,12 +11,20 @@
     grid-column: span 2;
 }
 
-.categories-container button:nth-of-type(1) {
+.btn-categories-active {
+    border: none;
+    outline: none;
     background-color: #4661e6;
     color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
 }
 
-.categories-container button {
+.btn-categories-inActive {
     border: none;
     outline: none;
     background-color: #f2f4ff;

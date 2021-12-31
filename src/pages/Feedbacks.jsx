@@ -7,7 +7,11 @@ import Filter from "../components/Filter";
 import FeedbackLists from "../components/FeedbackLists";
 import "../style/feedbacks.css";
 
-const Feedbacks = () => {
+const Feedbacks = (props) => {
+  const feedbacks = props.feedbacks;
+  const feedbackCategorySelected = props.feedbackCategorySelected;
+  const setFeedbackCategorySelected = props.setFeedbackCategorySelected;
+
   const animation = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,11 +31,14 @@ const Feedbacks = () => {
     >
       <div className="dashboard-header">
         <Profile />
-        <Categories />
+        <Categories
+          feedbackCategorySelected={feedbackCategorySelected}
+          setFeedbackCategorySelected={setFeedbackCategorySelected}
+        />
         <Roadmap />
       </div>
       <Filter />
-      <FeedbackLists />
+      <FeedbackLists key={feedbacks._id} feedbacks={feedbacks} />
     </motion.div>
   );
 };

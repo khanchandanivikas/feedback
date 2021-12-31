@@ -1,0 +1,25 @@
+.notFound-container {
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 6rem;
+    text-align: center;
+}
+
+.notFound-container img {
+    width: 15%;
+    margin: 2rem 0;
+}
+
+.notFound-container p {
+    margin: 1.5rem 0;
+}
+
+@media only screen and (max-width: 481px) {
+    .notFound-container {
+        padding: 2rem 2rem;
+    }
+}
