@@ -37,7 +37,7 @@ const Feedbacks = (props) => {
         />
         <Roadmap />
       </div>
-      <Filter />
+      <Filter feedbacks={feedbacks} />
       <FeedbackLists key={feedbacks._id} feedbacks={feedbacks} />
     </motion.div>
   );

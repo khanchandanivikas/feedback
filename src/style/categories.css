@@ -37,7 +37,12 @@
     cursor: pointer;
 }
 
-.categories-container button:hover {
+.btn-categories-inActive:hover {
     background-color: #aab5f5;
+    color: #fff;
+}
+
+.btn-categories-active:hover {
+    background-color: #5a71e4;
     color: #fff;
 }

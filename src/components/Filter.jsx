@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/filter.css";
 
-const Filter = () => {
+const Filter = (props) => {
+  const feedbacks = props.feedbacks;
   return (
     <div className="filter-container">
       <h3>
-        <i className="fas fa-lightbulb"></i> 6 Suggestions
+        <i className="fas fa-lightbulb"></i> {feedbacks.length} Suggestions
       </h3>
       <div className="sort">
         <p>Sort By : </p>
