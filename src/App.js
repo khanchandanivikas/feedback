@@ -44,6 +44,12 @@ function App() {
     // setToken(dato.token);
     setLoggedIn(true);
     localStorage.setItem(
+      "logged",
+      JSON.stringify({
+        login: true,
+      })
+    );
+    localStorage.setItem(
       "datosUsuario",
       JSON.stringify({
         userId: dato.userId,
@@ -62,6 +68,7 @@ function App() {
       // setToken(null);
       setDatos(null);
       localStorage.setItem("datosUsuario", JSON.stringify({}));
+      localStorage.setItem("logged", JSON.stringify({login: false}));
       cogoToast.success("Logout successful");
     }
   };
@@ -72,6 +79,7 @@ function App() {
     if (datosRecuperar && datosRecuperar.token) {
       // setToken(datosRecuperar.token);
       setDatos(datosRecuperar);
+      setLoggedIn(true);
     }
   }, [feedbackCategorySelected]);
 
