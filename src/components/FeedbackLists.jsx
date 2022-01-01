@@ -11,7 +11,7 @@ const FeedbackLists = (props) => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.2,
+        duration: 0.1,
       },
     },
   };

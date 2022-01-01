@@ -14,11 +14,17 @@ import Comments from "./pages/Comments";
 import RoadmapList from "./pages/RoadmapList";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
+import cogoToast from "cogo-toast";
 
 function App() {
   const [feedbacks, setFeedbacks] = useState([]);
   // category
   const [feedbackCategorySelected, setFeedbackCategorySelected] = useState("");
+  // datos  a la hora del login y alta userId y token
+  const [datos, setDatos] = useState({});
+  console.log(datos)
+  // token
+  const [token, setToken] = useState("");
 
   const getAllFeedbacks = async (category) => {
     try {
@@ -33,8 +39,37 @@ function App() {
     }
   };
 
+  // login and signup
+  const gestionarAcceso = (dato) => {
+    setDatos(dato);
+    setToken(dato.token);
+    localStorage.setItem(
+      "datosUsuario",
+      JSON.stringify({
+        userId: dato.userId,
+        userName: dato.userName,
+        email: dato.email,
+        avatar: dato.avatar,
+        token: dato.token,
+      })
+    );
+  };
+
+  // logout usuario
+  const gestionarLogout = () => {
+    setToken(null);
+    setDatos(null);
+    localStorage.setItem("datosUsuario", JSON.stringify({}));
+    cogoToast.success("Logout successful");
+  };
+
   useEffect(() => {
     getAllFeedbacks(feedbackCategorySelected);
+    const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
+    if (datosRecuperar && datosRecuperar.token) {
+      setToken(datosRecuperar.token);
+      setDatos(datosRecuperar);
+    }
   }, [feedbackCategorySelected]);
 
   return (
@@ -45,6 +80,8 @@ function App() {
             <Feedbacks
               key={feedbacks._id}
               feedbacks={feedbacks}
+              datos={datos}
+              gestionarLogout={gestionarLogout}
               feedbackCategorySelected={feedbackCategorySelected}
               setFeedbackCategorySelected={setFeedbackCategorySelected}
             />
@@ -62,10 +99,10 @@ function App() {
             <RoadmapList />
           </Route>
           <Route path="/signin">
-            <Signin />
+            <Signin gestionarAcceso={gestionarAcceso} />
           </Route>
           <Route path="/signup">
-            <Signup />
+            <Signup gestionarAcceso={gestionarAcceso} />
           </Route>
           <Redirect to="/" />
         </Switch>
