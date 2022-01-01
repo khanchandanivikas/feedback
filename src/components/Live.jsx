@@ -2,52 +2,37 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/live.css";
 
-const Live = () => {
+const Live = (props) => {
+  const liveFeedbacks = props.liveFeedbacks;
   return (
     <div>
-      <h4>Live (2)</h4>
-      <p>Ideas prioritized for research</p>
+      <h4>Live ({liveFeedbacks.length})</h4>
+      <p>Released features</p>
       <div>
-        <div className="live-task">
-          <p>
-            <i className="fas fa-circle"></i> Live
-          </p>
-          <Link to="/comments">
-            <h5>More comprehensive reports</h5>
-          </Link>
-          <p>
-            It would be great to see a more detailed breakdown of solutions.
-          </p>
-          <button>Feature</button>
-          <div className="stats">
-            <div className="feedback-upvote-roadmap">
-              <i className="fas fa-chevron-up"></i>
-              <button className="upvote">112</button>
+      {liveFeedbacks.map((liveFeedback) => {
+          return (
+            <div className="live-task">
+              <p>
+                <i className="fas fa-circle"></i> Live
+              </p>
+              <Link to="/comments">
+                <h5>{liveFeedback.title}</h5>
+              </Link>
+              <p>{liveFeedback.details}</p>
+              <button>{liveFeedback.category}</button>
+              <div className="stats">
+                <div className="feedback-upvote-roadmap">
+                  <i className="fas fa-chevron-up"></i>
+                  <button className="upvote">{liveFeedback.votes}</button>
+                </div>
+                <p>
+                  <i className="fas fa-comment"></i>{" "}
+                  {liveFeedback.comments.length}
+                </p>
+              </div>
             </div>
-            <p>
-              <i className="fas fa-comment"></i> 2
-            </p>
-          </div>
-        </div>
-        <div className="live-task">
-          <p>
-            <i className="fas fa-circle"></i> Live
-          </p>
-          <h5>More comprehensive reports</h5>
-          <p>
-            It would be great to see a more detailed breakdown of solutions.
-          </p>
-          <button>Feature</button>
-          <div className="stats">
-            <div className="feedback-upvote-roadmap">
-              <i className="fas fa-chevron-up"></i>
-              <button className="upvote">112</button>
-            </div>
-            <p>
-              <i className="fas fa-comment"></i> 2
-            </p>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   );

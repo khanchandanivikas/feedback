@@ -18,6 +18,9 @@ import cogoToast from "cogo-toast";
 
 function App() {
   const [feedbacks, setFeedbacks] = useState([]);
+  const [plannedFeedbacks, setPlannedFeedbacks] = useState([]);
+  const [progressFeedbacks, setProgressFeedbacks] = useState([]);
+  const [liveFeedbacks, setLiveFeedbacks] = useState([]);
   // category
   const [feedbackCategorySelected, setFeedbackCategorySelected] = useState("");
   // datos  a la hora del login y alta userId y token
@@ -33,6 +36,42 @@ function App() {
       );
       const datos = await request.data;
       setFeedbacks(datos.feedbacks);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getPlannedFeedbacks = async () => {
+    try {
+      const request = await axios.get(
+        process.env.REACT_APP_BACKEND_URL + "/api/feedback/status/planned"
+      );
+      const datos = await request.data;
+      setPlannedFeedbacks(datos.feedbacks);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getProgressFeedbacks = async () => {
+    try {
+      const request = await axios.get(
+        process.env.REACT_APP_BACKEND_URL + "/api/feedback/status/progress"
+      );
+      const datos = await request.data;
+      setProgressFeedbacks(datos.feedbacks);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getLiveFeedbacks = async () => {
+    try {
+      const request = await axios.get(
+        process.env.REACT_APP_BACKEND_URL + "/api/feedback/status/live"
+      );
+      const datos = await request.data;
+      setLiveFeedbacks(datos.feedbacks);
     } catch (error) {
       console.log(error);
     }
@@ -68,13 +107,16 @@ function App() {
       // setToken(null);
       setDatos(null);
       localStorage.setItem("datosUsuario", JSON.stringify({}));
-      localStorage.setItem("logged", JSON.stringify({login: false}));
+      localStorage.setItem("logged", JSON.stringify({ login: false }));
       cogoToast.success("Logout successful");
     }
   };
 
   useEffect(() => {
     getAllFeedbacks(feedbackCategorySelected);
+    getPlannedFeedbacks();
+    getProgressFeedbacks();
+    getLiveFeedbacks();
     const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
     if (datosRecuperar && datosRecuperar.token) {
       // setToken(datosRecuperar.token);
@@ -99,7 +141,11 @@ function App() {
             />
           </Route>
           <Route path="/addFeedback">
-            <AddFeedback />
+            <AddFeedback
+            datos={datos}
+              loggedIn={loggedIn}
+              getAllFeedbacks={getAllFeedbacks}
+            />
           </Route>
           <Route path="/editFeedback">
             <EditFeedback />
@@ -108,7 +154,11 @@ function App() {
             <Comments />
           </Route>
           <Route path="/roadmap">
-            <RoadmapList />
+            <RoadmapList
+              plannedFeedbacks={plannedFeedbacks}
+              progressFeedbacks={progressFeedbacks}
+              liveFeedbacks={liveFeedbacks}
+            />
           </Route>
           <Route path="/signin">
             <Signin gestionarAcceso={gestionarAcceso} />

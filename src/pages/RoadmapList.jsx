@@ -7,7 +7,10 @@ import Live from "../components/Live";
 import "../style/roadmaplist.css";
 import { useState } from "react";
 
-const RoadmapList = () => {
+const RoadmapList = (props) => {
+  const plannedFeedbacks = props.plannedFeedbacks;
+  const progressFeedbacks = props.progressFeedbacks;
+  const liveFeedbacks = props.liveFeedbacks;
   const [planned, setPlanned] = useState(true);
   const [progress, setProgress] = useState(false);
   const [live, setLive] = useState(false);
@@ -76,15 +79,15 @@ const RoadmapList = () => {
           animate="visible"
           className="roadmap-mobile"
         >
-          {planned && <Planned />}
-          {progress && <Progress />}
-          {live && <Live />}
+          {planned && <Planned plannedFeedbacks={plannedFeedbacks} />}
+          {progress && <Progress progressFeedbacks={progressFeedbacks} />}
+          {live && <Live liveFeedbacks={liveFeedbacks} />}
         </motion.div>
         {/* desktop version */}
         <div className="roadmap-grid">
-          <Planned />
-          <Progress />
-          <Live />
+          <Planned plannedFeedbacks={plannedFeedbacks} />
+          <Progress progressFeedbacks={progressFeedbacks} />
+          <Live liveFeedbacks={liveFeedbacks} />
         </div>
       </div>
     </motion.div>
