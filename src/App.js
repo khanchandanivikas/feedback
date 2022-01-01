@@ -22,6 +22,7 @@ function App() {
   const [feedbackCategorySelected, setFeedbackCategorySelected] = useState("");
   // datos  a la hora del login y alta userId y token
   const [datos, setDatos] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
   // token
   // const [token, setToken] = useState("");
 
@@ -41,6 +42,7 @@ function App() {
   const gestionarAcceso = (dato) => {
     setDatos(dato);
     // setToken(dato.token);
+    setLoggedIn(true);
     localStorage.setItem(
       "datosUsuario",
       JSON.stringify({
@@ -55,10 +57,13 @@ function App() {
 
   // logout usuario
   const gestionarLogout = () => {
-    // setToken(null);
-    setDatos(null);
-    localStorage.setItem("datosUsuario", JSON.stringify({}));
-    cogoToast.success("Logout successful");
+    if (datos.token) {
+      setLoggedIn(false);
+      // setToken(null);
+      setDatos(null);
+      localStorage.setItem("datosUsuario", JSON.stringify({}));
+      cogoToast.success("Logout successful");
+    }
   };
 
   useEffect(() => {
@@ -79,6 +84,7 @@ function App() {
               key={feedbacks._id}
               feedbacks={feedbacks}
               datos={datos}
+              loggedIn={loggedIn}
               gestionarLogout={gestionarLogout}
               feedbackCategorySelected={feedbackCategorySelected}
               setFeedbackCategorySelected={setFeedbackCategorySelected}

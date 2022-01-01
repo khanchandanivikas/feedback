@@ -7,8 +7,9 @@ const Profile = (props) => {
   let history = useHistory();
   const gestionarLogout = props.gestionarLogout;
   const datos = props.datos;
+  const loggedIn = props.loggedIn;
   const toggleProfileModal = () => {
-    if (datos) {
+    if (datos.token) {
       Swal.fire({
         title: "Logged in as:",
         text: "@" + datos.userName,
@@ -30,9 +31,7 @@ const Profile = (props) => {
     <div className="profile-box">
       <div>
         <i onClick={toggleProfileModal} className="fas fa-user"></i>
-        {datos && (
-          <i onClick={gestionarLogout} className="fas fa-sign-out-alt"></i>
-        )}
+        {loggedIn ? <i onClick={gestionarLogout} className="fas fa-sign-out-alt"></i> : null}
       </div>
       <div>
         <h3>Frontend Mentor</h3>

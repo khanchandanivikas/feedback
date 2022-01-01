@@ -13,6 +13,7 @@ const Feedbacks = (props) => {
   const setFeedbackCategorySelected = props.setFeedbackCategorySelected;
   const gestionarLogout = props.gestionarLogout;
   const datos = props.datos;
+  const loggedIn = props.loggedIn;
 
   const animation = {
     hidden: { opacity: 0 },
@@ -32,7 +33,11 @@ const Feedbacks = (props) => {
       className="dashboard-container"
     >
       <div className="dashboard-header">
-        <Profile gestionarLogout={gestionarLogout} datos={datos} />
+        <Profile
+          gestionarLogout={gestionarLogout}
+          datos={datos}
+          loggedIn={loggedIn}
+        />
         <Categories
           feedbackCategorySelected={feedbackCategorySelected}
           setFeedbackCategorySelected={setFeedbackCategorySelected}
