@@ -31,7 +31,6 @@ function App() {
         process.env.REACT_APP_BACKEND_URL + `/api/feedback/${category}`
       );
       const datos = await request.data;
-      console.log(datos);
       setFeedbacks(datos.feedbacks);
     } catch (error) {
       console.log(error);
@@ -41,7 +40,7 @@ function App() {
   // login and signup
   const gestionarAcceso = (dato) => {
     setDatos(dato);
-    setToken(dato.token);
+    // setToken(dato.token);
     localStorage.setItem(
       "datosUsuario",
       JSON.stringify({
@@ -56,7 +55,7 @@ function App() {
 
   // logout usuario
   const gestionarLogout = () => {
-    setToken(null);
+    // setToken(null);
     setDatos(null);
     localStorage.setItem("datosUsuario", JSON.stringify({}));
     cogoToast.success("Logout successful");
@@ -66,7 +65,7 @@ function App() {
     getAllFeedbacks(feedbackCategorySelected);
     const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
     if (datosRecuperar && datosRecuperar.token) {
-      setToken(datosRecuperar.token);
+      // setToken(datosRecuperar.token);
       setDatos(datosRecuperar);
     }
   }, [feedbackCategorySelected]);
