@@ -22,9 +22,8 @@ function App() {
   const [feedbackCategorySelected, setFeedbackCategorySelected] = useState("");
   // datos  a la hora del login y alta userId y token
   const [datos, setDatos] = useState({});
-  console.log(datos)
   // token
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
 
   const getAllFeedbacks = async (category) => {
     try {
