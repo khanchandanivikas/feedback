@@ -9,7 +9,7 @@ const Profile = (props) => {
   const datos = props.datos;
   const loggedIn = props.loggedIn;
   const toggleProfileModal = () => {
-    if (datos.token) {
+    if (loggedIn) {
       Swal.fire({
         title: "Logged in as:",
         text: "@" + datos.userName,
