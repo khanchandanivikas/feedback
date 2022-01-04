@@ -42,6 +42,15 @@ img {
 }
 
 .comments {
+    border-top: solid 1px #F0F1F5;
+}
+
+.comments:nth-last-of-type(3) {
+    border-top: none;
+}
+
+.comments,
+.comments_reply {
     width: 100%;
     border-radius: 10px;
     display: flex;
@@ -49,27 +58,35 @@ img {
     padding: 2rem;
     transition: all 0.4s ease;
     margin-bottom: 1.5rem;
-    border-bottom: solid 1px #F0F1F5;
 }
 
-.comments:nth-last-child(1) {
+.comments_reply {
+    padding: 0 2rem 0 6rem;
+}
+
+.comments:nth-last-child(1),
+.comments_reply:nth-last-child(1) {
     border-bottom: none;
 }
 
-.comments div:nth-child(1) {
+.comments div:nth-child(1),
+.comments_reply div:nth-child(1) {
     width: 25%;
 }
 
-.comments div:nth-child(2) p:nth-child(1) {
+.comments div:nth-child(2) p:nth-child(1),
+.comments_reply div:nth-child(2) p:nth-child(1) {
     margin-top: 10px;
 }
 
-.comments div:nth-child(2) p:nth-child(3) {
+.comments div:nth-child(2) p:nth-child(3),
+.comments_reply div:nth-child(2) p:nth-child(3) {
     margin-top: 1rem;
     padding-right: 1rem;
 }
 
-.comments div:nth-child(3) h4 {
+.comments div:nth-child(3) h4,
+.comments_reply div:nth-child(3) h4 {
     color: #4661e6;
     cursor: pointer;
 }
@@ -136,7 +153,12 @@ img {
         margin-right: 5px;
     }
 
-    .comments div:nth-child(3) h4 {
+    .comments div:nth-child(3) h4,
+    .comments_reply div:nth-child(3) h4 {
         font-size: 0.8rem;
+    }
+
+    .comments_reply {
+        padding: 0 2rem 0 4rem;
     }
 }

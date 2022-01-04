@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import cogoToast from "cogo-toast";
+import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../style/addFeedback.css";
-import Swal from "sweetalert2";
 
 const AddFeedback = (props) => {
   const [details, setDetails] = useState("");
@@ -17,7 +17,6 @@ const AddFeedback = (props) => {
   const loggedIn = props.loggedIn;
   const getAllFeedbacks = props.getAllFeedbacks;
   const datos = props.datos;
-  console.log(datos);
   let history = useHistory();
   const {
     register,
@@ -26,7 +25,6 @@ const AddFeedback = (props) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     if (loggedIn) {
       await axios
         .post(process.env.REACT_APP_BACKEND_URL + "/api/feedback/", {

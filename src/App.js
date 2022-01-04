@@ -18,6 +18,7 @@ import cogoToast from "cogo-toast";
 
 function App() {
   const [feedbacks, setFeedbacks] = useState([]);
+  console.log(feedbacks)
   const [plannedFeedbacks, setPlannedFeedbacks] = useState([]);
   const [progressFeedbacks, setProgressFeedbacks] = useState([]);
   const [liveFeedbacks, setLiveFeedbacks] = useState([]);
@@ -28,6 +29,22 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   // token
   // const [token, setToken] = useState("");
+  const [feedbackIdSelected, setFeedbackIdSelected] = useState("");
+  const [feedbackSelected, setFeedbackSelected] = useState([]);
+  console.log(feedbackIdSelected)
+  console.log(feedbackSelected)
+
+  const getSelectedFeedback = async (id) => {
+    try {
+      const request = await axios.get(
+        process.env.REACT_APP_BACKEND_URL + `/api/comment/feedbackId/${id}`
+      );
+      const datos = await request.data;
+      setFeedbackSelected(datos.comments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getAllFeedbacks = async (category) => {
     try {
@@ -123,7 +140,8 @@ function App() {
       setDatos(datosRecuperar);
       setLoggedIn(true);
     }
-  }, [feedbackCategorySelected]);
+    getSelectedFeedback(feedbackIdSelected);
+  }, [feedbackCategorySelected, feedbackIdSelected]);
 
   return (
     <div className="App">
@@ -138,11 +156,12 @@ function App() {
               gestionarLogout={gestionarLogout}
               feedbackCategorySelected={feedbackCategorySelected}
               setFeedbackCategorySelected={setFeedbackCategorySelected}
+              setFeedbackIdSelected={setFeedbackIdSelected}
             />
           </Route>
           <Route path="/addFeedback">
             <AddFeedback
-            datos={datos}
+              datos={datos}
               loggedIn={loggedIn}
               getAllFeedbacks={getAllFeedbacks}
             />
@@ -151,7 +170,7 @@ function App() {
             <EditFeedback />
           </Route>
           <Route path="/comments">
-            <Comments />
+            <Comments feedbackSelected={feedbackSelected} />
           </Route>
           <Route path="/roadmap">
             <RoadmapList

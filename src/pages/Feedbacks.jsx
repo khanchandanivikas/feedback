@@ -14,6 +14,7 @@ const Feedbacks = (props) => {
   const gestionarLogout = props.gestionarLogout;
   const datos = props.datos;
   const loggedIn = props.loggedIn;
+  const setFeedbackIdSelected = props.setFeedbackIdSelected;
 
   const animation = {
     hidden: { opacity: 0 },
@@ -45,7 +46,11 @@ const Feedbacks = (props) => {
         <Roadmap />
       </div>
       <Filter feedbacks={feedbacks} />
-      <FeedbackLists key={feedbacks._id} feedbacks={feedbacks} />
+      <FeedbackLists
+        key={feedbacks._id}
+        feedbacks={feedbacks}
+        setFeedbackIdSelected={setFeedbackIdSelected}
+      />
     </motion.div>
   );
 };
