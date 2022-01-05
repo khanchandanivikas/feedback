@@ -8,6 +8,7 @@ const FeedbackLists = (props) => {
   let history = useHistory();
   const feedbacks = props.feedbacks;
   const setFeedbackIdSelected = props.setFeedbackIdSelected;
+  const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
   const animation = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,20 +35,36 @@ const FeedbackLists = (props) => {
               <button className="upvote">{feedback.votes}</button>
             </div>
             <div>
-              {/* <Link to="/comments"> */}
-                <h3
-                  value={feedback._id}
-                  onClick={() => {
-                    setFeedbackIdSelected(feedback._id);
-                    setTimeout(() => {
-                      history.push("/comments");
-                    }, 700);
-                  }}
-                  className="link"
-                >
-                  {feedback.title}
-                </h3>
-              {/* </Link> */}
+              <h3
+                value={feedback._id}
+                onClick={() => {
+                  setFeedbackIdSelected(feedback._id);
+                  setFeedbackInfoSelected(feedback);
+                  localStorage.setItem(
+                    "feedbackInfo",
+                    JSON.stringify({
+                      title: feedback.title,
+                      details: feedback.details,
+                      votes: feedback.votes,
+                      category: feedback.category,
+                      comments: feedback.comments,
+                      status: feedback.status,
+                    })
+                  );
+                  localStorage.setItem(
+                    "feedbackSelectedId",
+                    JSON.stringify({
+                      id: feedback._id,
+                    })
+                  );
+                  setTimeout(() => {
+                    history.push("/comments");
+                  }, 700);
+                }}
+                className="link"
+              >
+                {feedback.title}
+              </h3>
               <p>{feedback.details}</p>
               <button>{feedback.category}</button>
             </div>

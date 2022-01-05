@@ -1,7 +1,5 @@
 .reply-form-container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
+    padding: 0 2rem 1rem 2rem;
     margin-top: -1rem;
 }
 
@@ -34,4 +32,10 @@
 
 .fa-paper-plane {
     color: #6c6d6e;
+}
+
+@media only screen and (max-width: 640px) {
+    .reply-form-container {
+        padding-left: 0;
+    }
 }

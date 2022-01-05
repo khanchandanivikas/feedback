@@ -11,6 +11,8 @@ const RoadmapList = (props) => {
   const plannedFeedbacks = props.plannedFeedbacks;
   const progressFeedbacks = props.progressFeedbacks;
   const liveFeedbacks = props.liveFeedbacks;
+  const setFeedbackIdSelected = props.setFeedbackIdSelected;
+  const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
   const [planned, setPlanned] = useState(true);
   const [progress, setProgress] = useState(false);
   const [live, setLive] = useState(false);
@@ -79,15 +81,48 @@ const RoadmapList = (props) => {
           animate="visible"
           className="roadmap-mobile"
         >
-          {planned && <Planned plannedFeedbacks={plannedFeedbacks} />}
-          {progress && <Progress progressFeedbacks={progressFeedbacks} />}
-          {live && <Live liveFeedbacks={liveFeedbacks} />}
+          {planned && (
+            <Planned
+              key={plannedFeedbacks._id}
+              plannedFeedbacks={plannedFeedbacks}
+              setFeedbackIdSelected={setFeedbackIdSelected}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
+            />
+          )}
+          {progress && (
+            <Progress
+              key={progressFeedbacks._id}
+              progressFeedbacks={progressFeedbacks}
+              setFeedbackIdSelected={setFeedbackIdSelected}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
+            />
+          )}
+          {live && (
+            <Live
+              key={liveFeedbacks._id}
+              liveFeedbacks={liveFeedbacks}
+              setFeedbackIdSelected={setFeedbackIdSelected}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
+            />
+          )}
         </motion.div>
         {/* desktop version */}
         <div className="roadmap-grid">
-          <Planned plannedFeedbacks={plannedFeedbacks} />
-          <Progress progressFeedbacks={progressFeedbacks} />
-          <Live liveFeedbacks={liveFeedbacks} />
+          <Planned
+            plannedFeedbacks={plannedFeedbacks}
+            setFeedbackIdSelected={setFeedbackIdSelected}
+            setFeedbackInfoSelected={setFeedbackInfoSelected}
+          />
+          <Progress
+            progressFeedbacks={progressFeedbacks}
+            setFeedbackIdSelected={setFeedbackIdSelected}
+            setFeedbackInfoSelected={setFeedbackInfoSelected}
+          />
+          <Live
+            liveFeedbacks={liveFeedbacks}
+            setFeedbackIdSelected={setFeedbackIdSelected}
+            setFeedbackInfoSelected={setFeedbackInfoSelected}
+          />
         </div>
       </div>
     </motion.div>

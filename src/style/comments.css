@@ -17,6 +17,7 @@
 .comment-container h3 {
     margin-top: 1rem;
     margin-left: 2rem;
+    margin-bottom: 1rem;
 }
 
 .goBack {
@@ -43,10 +44,6 @@ img {
 
 .comments {
     border-top: solid 1px #F0F1F5;
-}
-
-.comments:nth-last-of-type(3) {
-    border-top: none;
 }
 
 .comments,

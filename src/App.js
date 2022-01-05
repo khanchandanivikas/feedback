@@ -18,7 +18,6 @@ import cogoToast from "cogo-toast";
 
 function App() {
   const [feedbacks, setFeedbacks] = useState([]);
-  console.log(feedbacks)
   const [plannedFeedbacks, setPlannedFeedbacks] = useState([]);
   const [progressFeedbacks, setProgressFeedbacks] = useState([]);
   const [liveFeedbacks, setLiveFeedbacks] = useState([]);
@@ -29,11 +28,14 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   // token
   // const [token, setToken] = useState("");
+  // comments
   const [feedbackIdSelected, setFeedbackIdSelected] = useState("");
+  // the comments of the feedback
   const [feedbackSelected, setFeedbackSelected] = useState([]);
-  console.log(feedbackIdSelected)
-  console.log(feedbackSelected)
+  // feedback
+  const [feedbackSelectedInfo, setFeedbackInfoSelected] = useState({});
 
+  // comments
   const getSelectedFeedback = async (id) => {
     try {
       const request = await axios.get(
@@ -73,7 +75,7 @@ function App() {
   const getProgressFeedbacks = async () => {
     try {
       const request = await axios.get(
-        process.env.REACT_APP_BACKEND_URL + "/api/feedback/status/progress"
+        process.env.REACT_APP_BACKEND_URL + "/api/feedback/status/in-progress"
       );
       const datos = await request.data;
       setProgressFeedbacks(datos.feedbacks);
@@ -97,7 +99,6 @@ function App() {
   // login and signup
   const gestionarAcceso = (dato) => {
     setDatos(dato);
-    // setToken(dato.token);
     setLoggedIn(true);
     localStorage.setItem(
       "logged",
@@ -121,7 +122,6 @@ function App() {
   const gestionarLogout = () => {
     if (datos.token) {
       setLoggedIn(false);
-      // setToken(null);
       setDatos(null);
       localStorage.setItem("datosUsuario", JSON.stringify({}));
       localStorage.setItem("logged", JSON.stringify({ login: false }));
@@ -136,9 +136,17 @@ function App() {
     getLiveFeedbacks();
     const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
     if (datosRecuperar && datosRecuperar.token) {
-      // setToken(datosRecuperar.token);
       setDatos(datosRecuperar);
       setLoggedIn(true);
+    }
+    const feedbackInfoRecuperar = JSON.parse(
+      localStorage.getItem("feedbackInfo")
+    );
+    const feedbackId = JSON.parse(localStorage.getItem("feedbackSelectedId"));
+    if (feedbackInfoRecuperar && feedbackInfoRecuperar.title) {
+      setFeedbackInfoSelected(feedbackInfoRecuperar);
+      setFeedbackIdSelected(feedbackId.id);
+      getSelectedFeedback(feedbackId.id);
     }
     getSelectedFeedback(feedbackIdSelected);
   }, [feedbackCategorySelected, feedbackIdSelected]);
@@ -157,6 +165,7 @@ function App() {
               feedbackCategorySelected={feedbackCategorySelected}
               setFeedbackCategorySelected={setFeedbackCategorySelected}
               setFeedbackIdSelected={setFeedbackIdSelected}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
             />
           </Route>
           <Route path="/addFeedback">
@@ -167,16 +176,32 @@ function App() {
             />
           </Route>
           <Route path="/editFeedback">
-            <EditFeedback />
+            <EditFeedback
+              feedbackIdSelected={feedbackIdSelected}
+              feedbackSelectedInfo={feedbackSelectedInfo}
+              getAllFeedbacks={getAllFeedbacks}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
+            />
           </Route>
           <Route path="/comments">
-            <Comments feedbackSelected={feedbackSelected} />
+            <Comments
+              loggedIn={loggedIn}
+              datos={datos}
+              key={feedbackSelected._id}
+              feedbackSelected={feedbackSelected}
+              feedbackSelectedInfo={feedbackSelectedInfo}
+              feedbackIdSelected={feedbackIdSelected}
+              getSelectedFeedback={getSelectedFeedback}
+            />
           </Route>
           <Route path="/roadmap">
             <RoadmapList
+              key={plannedFeedbacks._id}
               plannedFeedbacks={plannedFeedbacks}
               progressFeedbacks={progressFeedbacks}
               liveFeedbacks={liveFeedbacks}
+              setFeedbackIdSelected={setFeedbackIdSelected}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
             />
           </Route>
           <Route path="/signin">

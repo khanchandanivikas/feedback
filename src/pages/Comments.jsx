@@ -1,16 +1,31 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import ReplyBox from "../components/ReplyBox";
 import { useState } from "react";
 import Replies from "../components/Replies";
 import "../style/comments.css";
+import cogoToast from "cogo-toast";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 const Comments = (props) => {
+  let history = useHistory();
+  const datos = props.datos;
+  const loggedIn = props.loggedIn;
   const feedbackSelected = props.feedbackSelected;
+  const feedbackSelectedInfo = props.feedbackSelectedInfo;
+  const feedbackIdSelected = props.feedbackIdSelected;
+  const getSelectedFeedback = props.getSelectedFeedback;
   const [reply, setReply] = useState(false);
   const toggleReply = () => {
     setReply(!reply);
+  };
+
+  const [details, setDetails] = useState("");
+  const handleDetails = (e) => {
+    setDetails(e.target.value);
   };
 
   const animation = {
@@ -22,6 +37,57 @@ const Comments = (props) => {
       },
     },
   };
+
+  // create comment
+  const createComment = async (e) => {
+    e.preventDefault();
+    if (loggedIn) {
+      await axios
+        .post(process.env.REACT_APP_BACKEND_URL + "/api/comment/", {
+          details: details,
+          creator: datos.userId,
+          feedback_ref: feedbackIdSelected,
+        })
+        .then((response) => {
+          setDetails("");
+          getSelectedFeedback(response.data.comment.feedback_ref);
+          cogoToast.success("Comment Created");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Not Logged",
+        text: "You must be logged in to post a comment",
+        confirmButtonColor: "#4661e6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/signin");
+        }
+      });
+    }
+  };
+
+  const handleEditClick = () => {
+    if (loggedIn) {
+      history.push("/editFeedback")
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Not Logged",
+        text: "You must be logged in to edit a feedback",
+        confirmButtonColor: "#4661e6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/signin");
+        }
+      });
+    }
+  }
 
   return (
     <motion.div
@@ -37,36 +103,37 @@ const Comments = (props) => {
               <i className="fas fa-chevron-left"></i>Go Back
             </p>
           </Link>
-          <Link to="/editFeedback">
-            <button className="btn-cancel">Edit Feedback</button>
-          </Link>
+            <button onClick={handleEditClick} className="btn-cancel">Edit Feedback</button>
         </div>
         {/* feedback title */}
         <div className="feedback-single">
           <div className="feedback-upvote">
             <i className="fas fa-chevron-up"></i>
-            <button className="upvote">
-              {feedbackSelected[0].feedback_ref.votes}
-            </button>
+            <button className="upvote">{feedbackSelectedInfo.votes}</button>
           </div>
           <div>
             <Link to="/comments">
-              <h3 className="link">{feedbackSelected[0].feedback_ref.title}</h3>
+              <h3 className="link">{feedbackSelectedInfo.title}</h3>
             </Link>
-            <p>{feedbackSelected[0].feedback_ref.details}</p>
-            <button>{feedbackSelected[0].feedback_ref.category}</button>
+            <p>{feedbackSelectedInfo.details}</p>
+            <button>{feedbackSelectedInfo.category}</button>
           </div>
           <div>
             <i className="fas fa-comment"></i>
-            <h4>{feedbackSelected[0].feedback_ref.comments.length}</h4>
+            <h4>
+              {!feedbackSelectedInfo.comments
+                ? null
+                : feedbackSelectedInfo.comments.length}
+            </h4>
           </div>
         </div>
         {/* comments */}
         <div className="comment-container">
-          <h3>Comments</h3>
+          <h3>{feedbackSelected.length} Comments</h3>
           {feedbackSelected.map((comment) => {
+            console.log(feedbackSelected.indexOf(comment));
             return (
-              <div>
+              <div key={comment._id}>
                 <div className="comments">
                   <div>
                     <img src={comment.creator.avatar} alt="avater" />
@@ -81,7 +148,9 @@ const Comments = (props) => {
                   </div>
                 </div>
                 <AnimatePresence>{reply ? <ReplyBox /> : null}</AnimatePresence>
-                {comment.replies.length > 0 && <Replies comment={comment} />}
+                {comment.replies.length > 0 && (
+                  <Replies key={comment._id} comment={comment} />
+                )}
               </div>
             );
           })}
@@ -89,10 +158,14 @@ const Comments = (props) => {
         {/* add comment form */}
         <div className="addComment-container">
           <h3>Add Comment</h3>
-          <form action="">
-            <textarea placeholder="Type your comment here" />
+          <form action="" onSubmit={createComment}>
+            <textarea
+              value={details}
+              onChange={handleDetails}
+              placeholder="Type your comment here"
+            />
             <div>
-              <button>Post Comment</button>
+              <button type="submit">Post Comment</button>
             </div>
           </form>
         </div>

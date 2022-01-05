@@ -12,7 +12,7 @@ const Replies = (props) => {
 
   return (
     <div className="comment-container">
-      <div className="comments_reply">
+      <div className="comments_reply">  
         <div>
           <img src={comment.creator.avatar} alt="avater" />
         </div>
@@ -21,7 +21,7 @@ const Replies = (props) => {
           <p>@{comment.creator.userName}</p>
           {comment.replies.map((reply) => {
             return (
-              <p>{reply.details}</p>
+              <p key={reply._id}>{reply.details}</p>
             );
           })}
         </div>

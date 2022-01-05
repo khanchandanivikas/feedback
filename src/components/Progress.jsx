@@ -1,23 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../style/progress.css";
 
 const Progress = (props) => {
+  let history = useHistory();
   const progressFeedbacks = props.progressFeedbacks;
-  console.log(progressFeedbacks)
+  const setFeedbackIdSelected = props.setFeedbackIdSelected;
+  const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
   return (
     <div>
       <h4>In-Progress ({progressFeedbacks.length})</h4>
       <p>Currently being developed</p>
       <div>
-      {progressFeedbacks.map((progressFeedback) => {
+        {progressFeedbacks.map((progressFeedback) => {
           return (
-            <div className="progress-task">
+            <div key={progressFeedback._id} className="progress-task">
               <p>
                 <i className="fas fa-circle"></i> In-Progress
               </p>
               <Link to="/comments">
-                <h5>{progressFeedback.title}</h5>
+                <h5
+                  value={progressFeedback._id}
+                  onClick={() => {
+                    setFeedbackIdSelected(progressFeedback._id);
+                    setFeedbackInfoSelected(progressFeedback);
+                    localStorage.setItem(
+                      "feedbackInfo",
+                      JSON.stringify({
+                        title: progressFeedback.title,
+                        details: progressFeedback.details,
+                        votes: progressFeedback.votes,
+                        category: progressFeedback.category,
+                        comments: progressFeedback.comments,
+                        status: progressFeedback.status,
+                      })
+                    );
+                    localStorage.setItem(
+                      "feedbackSelectedId",
+                      JSON.stringify({
+                        id: progressFeedback._id,
+                      })
+                    );
+                    setTimeout(() => {
+                      history.push("/comments");
+                    }, 700);
+                  }}
+                >
+                  {progressFeedback.title}
+                </h5>
               </Link>
               <p>{progressFeedback.details}</p>
               <button>{progressFeedback.category}</button>

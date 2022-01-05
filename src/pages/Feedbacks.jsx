@@ -15,6 +15,7 @@ const Feedbacks = (props) => {
   const datos = props.datos;
   const loggedIn = props.loggedIn;
   const setFeedbackIdSelected = props.setFeedbackIdSelected;
+  const setFeedbackInfoSelected= props.setFeedbackInfoSelected;
 
   const animation = {
     hidden: { opacity: 0 },
@@ -50,6 +51,7 @@ const Feedbacks = (props) => {
         key={feedbacks._id}
         feedbacks={feedbacks}
         setFeedbackIdSelected={setFeedbackIdSelected}
+        setFeedbackInfoSelected={setFeedbackInfoSelected}
       />
     </motion.div>
   );
