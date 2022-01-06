@@ -15,6 +15,9 @@ const FeedbackLists = (props) => {
   const datos = props.datos;
   const loggedIn = props.loggedIn;
   const getAllFeedbacks = props.getAllFeedbacks;
+  const getPlannedFeedbacks = props.getPlannedFeedbacks;
+  const getProgressFeedbacks = props.getProgressFeedbacks;
+  const getLiveFeedbacks = props.getLiveFeedbacks;
 
   const likeFeedback = async (feedbackId, userId) => {
     if (loggedIn) {
@@ -26,6 +29,9 @@ const FeedbackLists = (props) => {
         .then((response) => {
           console.log(response);
           getAllFeedbacks("");
+          getPlannedFeedbacks();
+          getProgressFeedbacks();
+          getLiveFeedbacks();
           cogoToast.success("Liked");
         })
         .catch((error) => {
@@ -56,6 +62,9 @@ const FeedbackLists = (props) => {
         .then((response) => {
           console.log(response);
           getAllFeedbacks("");
+          getPlannedFeedbacks();
+          getProgressFeedbacks();
+          getLiveFeedbacks();
           cogoToast.success("Disliked");
         })
         .catch((error) => {

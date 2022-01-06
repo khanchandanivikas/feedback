@@ -167,6 +167,12 @@ function App() {
               setFeedbackIdSelected={setFeedbackIdSelected}
               setFeedbackInfoSelected={setFeedbackInfoSelected}
               getAllFeedbacks={getAllFeedbacks}
+              getPlannedFeedbacks={getPlannedFeedbacks}
+              getProgressFeedbacks={getProgressFeedbacks}
+              getLiveFeedbacks={getLiveFeedbacks}
+              plannedFeedbacks={plannedFeedbacks}
+              progressFeedbacks={progressFeedbacks}
+              liveFeedbacks={liveFeedbacks}
             />
           </Route>
           <Route path="/addFeedback">
@@ -174,6 +180,9 @@ function App() {
               datos={datos}
               loggedIn={loggedIn}
               getAllFeedbacks={getAllFeedbacks}
+              getPlannedFeedbacks={getPlannedFeedbacks}
+              getProgressFeedbacks={getProgressFeedbacks}
+              getLiveFeedbacks={getLiveFeedbacks}
             />
           </Route>
           <Route path="/editFeedback">
@@ -182,6 +191,9 @@ function App() {
               feedbackSelectedInfo={feedbackSelectedInfo}
               getAllFeedbacks={getAllFeedbacks}
               setFeedbackInfoSelected={setFeedbackInfoSelected}
+              getPlannedFeedbacks={getPlannedFeedbacks}
+              getProgressFeedbacks={getProgressFeedbacks}
+              getLiveFeedbacks={getLiveFeedbacks}
             />
           </Route>
           <Route path="/comments">
@@ -208,6 +220,7 @@ function App() {
               getPlannedFeedbacks={getPlannedFeedbacks}
               getProgressFeedbacks={getProgressFeedbacks}
               getLiveFeedbacks={getLiveFeedbacks}
+              getAllFeedbacks={getAllFeedbacks}
             />
           </Route>
           <Route path="/signin">

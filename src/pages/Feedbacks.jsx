@@ -9,6 +9,9 @@ import "../style/feedbacks.css";
 
 const Feedbacks = (props) => {
   const feedbacks = props.feedbacks;
+  const plannedFeedbacks = props.plannedFeedbacks;
+  const progressFeedbacks = props.progressFeedbacks;
+  const liveFeedbacks = props.liveFeedbacks;
   const feedbackCategorySelected = props.feedbackCategorySelected;
   const setFeedbackCategorySelected = props.setFeedbackCategorySelected;
   const gestionarLogout = props.gestionarLogout;
@@ -17,6 +20,9 @@ const Feedbacks = (props) => {
   const setFeedbackIdSelected = props.setFeedbackIdSelected;
   const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
   const getAllFeedbacks = props.getAllFeedbacks;
+  const getPlannedFeedbacks = props.getPlannedFeedbacks;
+  const getProgressFeedbacks = props.getProgressFeedbacks;
+  const getLiveFeedbacks = props.getLiveFeedbacks;
 
   const animation = {
     hidden: { opacity: 0 },
@@ -45,7 +51,11 @@ const Feedbacks = (props) => {
           feedbackCategorySelected={feedbackCategorySelected}
           setFeedbackCategorySelected={setFeedbackCategorySelected}
         />
-        <Roadmap />
+        <Roadmap
+          plannedFeedbacks={plannedFeedbacks}
+          progressFeedbacks={progressFeedbacks}
+          liveFeedbacks={liveFeedbacks}
+        />
       </div>
       <Filter feedbacks={feedbacks} />
       <FeedbackLists
@@ -56,6 +66,9 @@ const Feedbacks = (props) => {
         datos={datos}
         loggedIn={loggedIn}
         getAllFeedbacks={getAllFeedbacks}
+        getPlannedFeedbacks={getPlannedFeedbacks}
+        getProgressFeedbacks={getProgressFeedbacks}
+        getLiveFeedbacks={getLiveFeedbacks}
       />
     </motion.div>
   );

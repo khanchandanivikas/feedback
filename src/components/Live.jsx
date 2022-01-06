@@ -14,6 +14,8 @@ const Live = (props) => {
   const loggedIn = props.loggedIn;
   const datos = props.datos;
   const getLiveFeedbacks = props.getLiveFeedbacks;
+  const getAllFeedbacks = props.getAllFeedbacks;
+
   const likeFeedback = async (feedbackId, userId) => {
     if (loggedIn) {
       await axios
@@ -24,6 +26,7 @@ const Live = (props) => {
         .then((response) => {
           console.log(response);
           getLiveFeedbacks();
+          getAllFeedbacks("");
           cogoToast.success("Liked");
         })
         .catch((error) => {
@@ -54,6 +57,7 @@ const Live = (props) => {
         .then((response) => {
           console.log(response);
           getLiveFeedbacks();
+          getAllFeedbacks("");
           cogoToast.success("Disliked");
         })
         .catch((error) => {
@@ -117,7 +121,7 @@ const Live = (props) => {
                 </h5>
               </Link>
               <p>{liveFeedback.details}</p>
-              <button>{liveFeedback.category}</button>
+              <button class="btn-category">{liveFeedback.category}</button>
               <div className="stats">
               {liveFeedback.likes.includes(datos.userId) ? (
                   <div

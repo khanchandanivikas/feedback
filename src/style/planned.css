@@ -11,6 +11,18 @@
     transform: scale(1.015);
 }
 
+.btn-category {
+    background-color: #f2f4ff;
+    color: #4661e6;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
 .planned-task p:nth-child(1) {
     display: flex;
     justify-content: flex-start;

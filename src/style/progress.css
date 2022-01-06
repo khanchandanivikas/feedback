@@ -31,18 +31,6 @@
     margin-bottom: 1rem;
 }
 
-.progress-task button {
-    background-color: #f2f4ff;
-    color: #4661e6;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
 .feedback-upvote-roadmap {
     background-color: #f2f4ff;
     padding: 5px 10px;

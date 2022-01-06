@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../style/roadmap.css";
 
-const Roadmap = () => {
+const Roadmap = (props) => {
+  const plannedFeedbacks = props.plannedFeedbacks;
+  const progressFeedbacks = props.progressFeedbacks;
+  const liveFeedbacks = props.liveFeedbacks;
   return (
     <div className="roadmap-container">
       <div>
@@ -18,7 +21,7 @@ const Roadmap = () => {
           </span>{" "}
           Planned
         </p>
-        <p>2</p>
+        <p>{plannedFeedbacks.length}</p>
       </div>
       <div>
         <p>
@@ -27,7 +30,7 @@ const Roadmap = () => {
           </span>{" "}
           In-progress
         </p>
-        <p>3</p>
+        <p>{progressFeedbacks.length}</p>
       </div>
       <div>
         <p>
@@ -36,7 +39,7 @@ const Roadmap = () => {
           </span>{" "}
           Live
         </p>
-        <p>1</p>
+        <p>{liveFeedbacks.length}</p>
       </div>
     </div>
   );

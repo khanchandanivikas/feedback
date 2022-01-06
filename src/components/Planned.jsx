@@ -14,6 +14,7 @@ const Planned = (props) => {
   const loggedIn = props.loggedIn;
   const datos = props.datos;
   const getPlannedFeedbacks = props.getPlannedFeedbacks;
+  const getAllFeedbacks = props.getAllFeedbacks;
 
   const likeFeedback = async (feedbackId, userId) => {
     if (loggedIn) {
@@ -25,6 +26,7 @@ const Planned = (props) => {
         .then((response) => {
           console.log(response);
           getPlannedFeedbacks();
+          getAllFeedbacks("");
           cogoToast.success("Liked");
         })
         .catch((error) => {
@@ -55,6 +57,7 @@ const Planned = (props) => {
         .then((response) => {
           console.log(response);
           getPlannedFeedbacks();
+          getAllFeedbacks("");
           cogoToast.success("Disliked");
         })
         .catch((error) => {
@@ -118,7 +121,7 @@ const Planned = (props) => {
                 </h5>
               </Link>
               <p>{plannedFeedback.details}</p>
-              <button>{plannedFeedback.category}</button>
+              <button class="btn-category">{plannedFeedback.category}</button>
               <div className="stats">
                 {plannedFeedback.likes.includes(datos.userId) ? (
                   <div

@@ -14,6 +14,7 @@ const Progress = (props) => {
   const loggedIn = props.loggedIn;
   const datos = props.datos;
   const getProgressFeedbacks = props.getProgressFeedbacks;
+  const getAllFeedbacks = props.getAllFeedbacks;
 
   const likeFeedback = async (feedbackId, userId) => {
     if (loggedIn) {
@@ -25,6 +26,7 @@ const Progress = (props) => {
         .then((response) => {
           console.log(response);
           getProgressFeedbacks();
+          getAllFeedbacks("");
           cogoToast.success("Liked");
         })
         .catch((error) => {
@@ -55,6 +57,7 @@ const Progress = (props) => {
         .then((response) => {
           console.log(response);
           getProgressFeedbacks();
+          getAllFeedbacks("");
           cogoToast.success("Disliked");
         })
         .catch((error) => {
@@ -118,7 +121,7 @@ const Progress = (props) => {
                 </h5>
               </Link>
               <p>{progressFeedback.details}</p>
-              <button>{progressFeedback.category}</button>
+              <button class="btn-category">{progressFeedback.category}</button>
               <div className="stats">
                 {progressFeedback.likes.includes(datos.userId) ? (
                   <div

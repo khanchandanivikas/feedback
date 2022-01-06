@@ -16,6 +16,9 @@ const AddFeedback = (props) => {
   };
   const loggedIn = props.loggedIn;
   const getAllFeedbacks = props.getAllFeedbacks;
+  const getPlannedFeedbacks = props.getPlannedFeedbacks;
+  const getProgressFeedbacks = props.getProgressFeedbacks;
+  const getLiveFeedbacks = props.getLiveFeedbacks;
   const datos = props.datos;
   let history = useHistory();
   const {
@@ -36,6 +39,9 @@ const AddFeedback = (props) => {
         .then((response) => {
           console.log(response);
           getAllFeedbacks("");
+          getPlannedFeedbacks();
+          getProgressFeedbacks();
+          getLiveFeedbacks();
           history.push("/");
           cogoToast.success("Feedback Created");
         })

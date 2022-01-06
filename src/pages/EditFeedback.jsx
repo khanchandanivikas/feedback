@@ -11,6 +11,9 @@ const EditFeedback = (props) => {
   let history = useHistory();
   const feedbackSelectedInfo = props.feedbackSelectedInfo;
   const getAllFeedbacks = props.getAllFeedbacks;
+  const getPlannedFeedbacks = props.getPlannedFeedbacks;
+  const getProgressFeedbacks = props.getProgressFeedbacks;
+  const getLiveFeedbacks = props.getLiveFeedbacks;
   const feedbackIdSelected = props.feedbackIdSelected;
   const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
   const [title, setTitle] = useState(feedbackSelectedInfo.title);
@@ -59,6 +62,9 @@ const EditFeedback = (props) => {
           })
         );
         getAllFeedbacks("");
+        getPlannedFeedbacks();
+        getProgressFeedbacks();
+        getLiveFeedbacks();
         history.push("/comments");
         cogoToast.success("Feedback Edited");
       })

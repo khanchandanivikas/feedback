@@ -18,6 +18,7 @@ const RoadmapList = (props) => {
   const getPlannedFeedbacks = props.getPlannedFeedbacks;
   const getProgressFeedbacks = props.getProgressFeedbacks;
   const getLiveFeedbacks = props.getLiveFeedbacks;
+  const getAllFeedbacks = props.getAllFeedbacks;
   const [planned, setPlanned] = useState(true);
   const [progress, setProgress] = useState(false);
   const [live, setLive] = useState(false);
@@ -95,6 +96,7 @@ const RoadmapList = (props) => {
               loggedIn={loggedIn}
               datos={datos}
               getPlannedFeedbacks={getPlannedFeedbacks}
+              getAllFeedbacks={getAllFeedbacks}
             />
           )}
           {progress && (
@@ -106,6 +108,7 @@ const RoadmapList = (props) => {
               loggedIn={loggedIn}
               datos={datos}
               getProgressFeedbacks={getProgressFeedbacks}
+              getAllFeedbacks={getAllFeedbacks}
             />
           )}
           {live && (
@@ -117,6 +120,7 @@ const RoadmapList = (props) => {
               loggedIn={loggedIn}
               datos={datos}
               getLiveFeedbacks={getLiveFeedbacks}
+              getAllFeedbacks={getAllFeedbacks}
             />
           )}
         </motion.div>
@@ -130,6 +134,7 @@ const RoadmapList = (props) => {
             loggedIn={loggedIn}
             datos={datos}
             getPlannedFeedbacks={getPlannedFeedbacks}
+            getAllFeedbacks={getAllFeedbacks}
           />
           <Progress
             progressFeedbacks={progressFeedbacks}
@@ -138,6 +143,7 @@ const RoadmapList = (props) => {
             loggedIn={loggedIn}
             datos={datos}
             getProgressFeedbacks={getProgressFeedbacks}
+            getAllFeedbacks={getAllFeedbacks}
           />
           <Live
             liveFeedbacks={liveFeedbacks}
@@ -146,6 +152,7 @@ const RoadmapList = (props) => {
             loggedIn={loggedIn}
             datos={datos}
             getLiveFeedbacks={getLiveFeedbacks}
+            getAllFeedbacks={getAllFeedbacks}
           />
         </div>
       </div>
