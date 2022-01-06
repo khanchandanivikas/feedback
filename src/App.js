@@ -122,7 +122,7 @@ function App() {
   const gestionarLogout = () => {
     if (datos.token) {
       setLoggedIn(false);
-      setDatos(null);
+      setDatos({});
       localStorage.setItem("datosUsuario", JSON.stringify({}));
       localStorage.setItem("logged", JSON.stringify({ login: false }));
       cogoToast.success("Logout successful");
@@ -166,6 +166,7 @@ function App() {
               setFeedbackCategorySelected={setFeedbackCategorySelected}
               setFeedbackIdSelected={setFeedbackIdSelected}
               setFeedbackInfoSelected={setFeedbackInfoSelected}
+              getAllFeedbacks={getAllFeedbacks}
             />
           </Route>
           <Route path="/addFeedback">
@@ -202,6 +203,11 @@ function App() {
               liveFeedbacks={liveFeedbacks}
               setFeedbackIdSelected={setFeedbackIdSelected}
               setFeedbackInfoSelected={setFeedbackInfoSelected}
+              datos={datos}
+              loggedIn={loggedIn}
+              getPlannedFeedbacks={getPlannedFeedbacks}
+              getProgressFeedbacks={getProgressFeedbacks}
+              getLiveFeedbacks={getLiveFeedbacks}
             />
           </Route>
           <Route path="/signin">

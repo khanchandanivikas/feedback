@@ -31,19 +31,8 @@
     margin-bottom: 1rem;
 }
 
-.planned-task button {
-    background-color: #f2f4ff;
-    color: #4661e6;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 0.8rem;
-    cursor: pointer;
-}
-
-.feedback-upvote-roadmap {
+.feedback-upvote-roadmap,
+.feedback-downvote-roadmap {
     background-color: #f2f4ff;
     padding: 5px 10px;
     border-radius: 10px;
@@ -51,12 +40,26 @@
     transition: all 0.3s ease;
 }
 
-.feedback-upvote-roadmap:hover {
+.feedback-downvote-roadmap {
+    background-color: #4661e6;
+    color: #fff;
+}
+
+.feedback-upvote-roadmap:hover,
+.feedback-downvote-roadmap:hover {
     background-color: #aab5f5;
 }
 
 .feedback-upvote-roadmap:hover .upvote {
     background-color: #aab5f5;
+}
+
+.feedback-downvote-roadmap:hover .downvote {
+    background-color: #aab5f5;
+}
+
+.feedback-downvote-roadmap .fa-chevron-up {
+    color: #fff;
 }
 
 .stats {

@@ -14,7 +14,8 @@
     transform: scale(1.015);
 }
 
-.feedback-upvote {
+.feedback-upvote,
+.feedback-downvote {
     flex-direction: column;
     align-items: center;
     background-color: #f2f4ff;
@@ -24,11 +25,18 @@
     transition: all 0.3s ease;
 }
 
-.feedback-upvote:hover {
+.feedback-downvote {
+    background-color: #4661e6;
+    color: #fff;
+}
+
+.feedback-upvote:hover,
+.feedback-downvote:hover {
     background-color: #aab5f5;
 }
 
-.upvote {
+.upvote,
+.downvote {
     color: #647196;
     font-weight: 600;
     font-size: 0.9rem;
@@ -36,7 +44,16 @@
     transition: all 0.3s ease;
 }
 
+.downvote {
+    background-color: #4661e6;
+    color: #fff;
+}
+
 .feedback-upvote:hover .upvote {
+    background-color: #aab5f5;
+}
+
+.feedback-downvote:hover .downvote {
     background-color: #aab5f5;
 }
 
@@ -44,6 +61,10 @@
     font-size: 0.7rem;
     margin-bottom: 10px;
     color: #4661e6;
+}
+
+.feedback-downvote .fa-chevron-up {
+    color: #fff;
 }
 
 .feedback-single div:nth-child(3) {

@@ -3,12 +3,79 @@ import { motion } from "framer-motion";
 import "../style/feedbackLists.css";
 import { useHistory } from "react-router-dom";
 import NotFoundCategory from "./NotFoundCategory";
+import Swal from "sweetalert2";
+import cogoToast from "cogo-toast";
+import axios from "axios";
 
 const FeedbackLists = (props) => {
   let history = useHistory();
   const feedbacks = props.feedbacks;
   const setFeedbackIdSelected = props.setFeedbackIdSelected;
   const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
+  const datos = props.datos;
+  const loggedIn = props.loggedIn;
+  const getAllFeedbacks = props.getAllFeedbacks;
+
+  const likeFeedback = async (feedbackId, userId) => {
+    if (loggedIn) {
+      await axios
+        .patch(
+          process.env.REACT_APP_BACKEND_URL +
+            `/api/feedback/increment/${feedbackId}/${userId}`
+        )
+        .then((response) => {
+          console.log(response);
+          getAllFeedbacks("");
+          cogoToast.success("Liked");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Not Logged",
+        text: "You must be logged in to vote for  a feedback",
+        confirmButtonColor: "#4661e6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/signin");
+        }
+      });
+    }
+  };
+
+  const dislikeFeedback = async (feedbackId, userId) => {
+    if (loggedIn) {
+      await axios
+        .patch(
+          process.env.REACT_APP_BACKEND_URL +
+            `/api/feedback/decrement/${feedbackId}/${userId}`
+        )
+        .then((response) => {
+          console.log(response);
+          getAllFeedbacks("");
+          cogoToast.success("Disliked");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Not Logged",
+        text: "You must be logged in to vote for  a feedback",
+        confirmButtonColor: "#4661e6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/signin");
+        }
+      });
+    }
+  };
+
   const animation = {
     hidden: { opacity: 0 },
     visible: {
@@ -30,10 +97,23 @@ const FeedbackLists = (props) => {
             key={feedback._id}
             className="feedback-single"
           >
-            <div className="feedback-upvote">
-              <i className="fas fa-chevron-up"></i>
-              <button className="upvote">{feedback.votes}</button>
-            </div>
+            {(feedback.likes.includes(datos.userId) && datos) ? (
+              <div
+                onClick={() => dislikeFeedback(feedback._id, datos.userId)}
+                className="feedback-downvote"
+              >
+                <i className="fas fa-chevron-up"></i>
+                <button className="downvote">{feedback.votes}</button>
+              </div>
+            ) : (
+              <div
+                onClick={() => likeFeedback(feedback._id, datos.userId)}
+                className="feedback-upvote"
+              >
+                <i className="fas fa-chevron-up"></i>
+                <button className="upvote">{feedback.votes}</button>
+              </div>
+            )}
             <div>
               <h3
                 value={feedback._id}
