@@ -8,6 +8,8 @@ const Profile = (props) => {
   const gestionarLogout = props.gestionarLogout;
   const datos = props.datos;
   const loggedIn = props.loggedIn;
+  const deleteUser = props.deleteUser;
+
   const toggleProfileModal = () => {
     if (loggedIn) {
       Swal.fire({
@@ -22,6 +24,10 @@ const Profile = (props) => {
         cancelButtonColor: "#4158D0",
         confirmButtonColor: "#d73737",
         confirmButtonText: "Delete Account",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteUser();
+        }
       });
     } else {
       history.push("/signin");
@@ -31,7 +37,9 @@ const Profile = (props) => {
     <div className="profile-box">
       <div>
         <i onClick={toggleProfileModal} className="fas fa-user"></i>
-        {loggedIn ? <i onClick={gestionarLogout} className="fas fa-sign-out-alt"></i> : null}
+        {loggedIn ? (
+          <i onClick={gestionarLogout} className="fas fa-sign-out-alt"></i>
+        ) : null}
       </div>
       <div>
         <h3>Frontend Mentor</h3>

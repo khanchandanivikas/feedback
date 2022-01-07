@@ -18,6 +18,102 @@ const Comments = (props) => {
   const feedbackSelectedInfo = props.feedbackSelectedInfo;
   const feedbackIdSelected = props.feedbackIdSelected;
   const getSelectedFeedback = props.getSelectedFeedback;
+  const getAllFeedbacks = props.getAllFeedbacks;
+  const getPlannedFeedbacks = props.getPlannedFeedbacks;
+  const getProgressFeedbacks = props.getProgressFeedbacks;
+  const getLiveFeedbacks = props.getLiveFeedbacks;
+  const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
+
+  const likeFeedback = async (feedbackId, userId) => {
+    if (loggedIn) {
+      await axios
+        .patch(
+          process.env.REACT_APP_BACKEND_URL +
+            `/api/feedback/increment/${feedbackId}/${userId}`
+        )
+        .then((response) => {
+          console.log(response);
+          getAllFeedbacks("");
+          getPlannedFeedbacks();
+          getProgressFeedbacks();
+          getLiveFeedbacks();
+          setFeedbackInfoSelected(response.data.feedback);
+          localStorage.setItem(
+            "feedbackInfo",
+            JSON.stringify({
+              title: response.data.feedback.title,
+              details: response.data.feedback.details,
+              votes: response.data.feedback.votes,
+              category: response.data.feedback.category,
+              comments: response.data.feedback.comments,
+              status: response.data.feedback.status,
+            })
+          );
+          cogoToast.success("Liked");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Not Logged",
+        text: "You must be logged in to vote for a feedback",
+        confirmButtonColor: "#4661e6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/signin");
+        }
+      });
+    }
+  };
+
+  const dislikeFeedback = async (feedbackId, userId) => {
+    if (loggedIn) {
+      await axios
+        .patch(
+          process.env.REACT_APP_BACKEND_URL +
+            `/api/feedback/decrement/${feedbackId}/${userId}`
+        )
+        .then((response) => {
+          console.log(response);
+          getAllFeedbacks("");
+          getPlannedFeedbacks();
+          getProgressFeedbacks();
+          getLiveFeedbacks();
+          setFeedbackInfoSelected(response.data.feedback);
+          localStorage.setItem(
+            "feedbackInfo",
+            JSON.stringify({
+              title: response.data.feedback.title,
+              details: response.data.feedback.details,
+              votes: response.data.feedback.votes,
+              category: response.data.feedback.category,
+              comments: response.data.feedback.comments,
+              status: response.data.feedback.status,
+            })
+          );
+          cogoToast.success("Disliked");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Not Logged",
+        text: "You must be logged in to vote for a feedback",
+        confirmButtonColor: "#4661e6",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push("/signin");
+        }
+      });
+    }
+  };
+
   const [reply, setReply] = useState(false);
   const toggleReply = () => {
     setReply(!reply);
@@ -73,7 +169,7 @@ const Comments = (props) => {
 
   const handleEditClick = () => {
     if (loggedIn) {
-      history.push("/editFeedback")
+      history.push("/editFeedback");
     } else {
       Swal.fire({
         icon: "error",
@@ -87,7 +183,7 @@ const Comments = (props) => {
         }
       });
     }
-  }
+  };
 
   return (
     <motion.div
@@ -103,14 +199,35 @@ const Comments = (props) => {
               <i className="fas fa-chevron-left"></i>Go Back
             </p>
           </Link>
-            <button onClick={handleEditClick} className="btn-cancel">Edit Feedback</button>
+          <button onClick={handleEditClick} className="btn-cancel">
+            Edit Feedback
+          </button>
         </div>
         {/* feedback title */}
         <div className="feedback-single">
-          <div className="feedback-upvote">
-            <i className="fas fa-chevron-up"></i>
-            <button className="upvote">{feedbackSelectedInfo.votes}</button>
-          </div>
+            {feedbackSelectedInfo.likes.includes(datos.userId) && datos ? (
+              <div
+                onClick={() =>
+                  dislikeFeedback(feedbackSelectedInfo._id, datos.userId)
+                }
+                className="feedback-downvote"
+              >
+                <i className="fas fa-chevron-up"></i>
+                <button className="downvote">
+                  {feedbackSelectedInfo.votes}
+                </button>
+              </div>
+            ) : (
+              <div
+                onClick={() =>
+                  likeFeedback(feedbackSelectedInfo._id, datos.userId)
+                }
+                className="feedback-upvote"
+              >
+                <i className="fas fa-chevron-up"></i>
+                <button className="upvote">{feedbackSelectedInfo.votes}</button>
+              </div>
+            )}
           <div>
             <Link to="/comments">
               <h3 className="link">{feedbackSelectedInfo.title}</h3>

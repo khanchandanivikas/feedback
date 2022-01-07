@@ -74,7 +74,7 @@ const FeedbackLists = (props) => {
       Swal.fire({
         icon: "error",
         title: "Not Logged",
-        text: "You must be logged in to vote for  a feedback",
+        text: "You must be logged in to vote for a feedback",
         confirmButtonColor: "#4661e6",
         confirmButtonText: "Login",
       }).then((result) => {

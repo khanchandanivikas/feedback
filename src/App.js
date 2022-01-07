@@ -15,6 +15,7 @@ import RoadmapList from "./pages/RoadmapList";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import cogoToast from "cogo-toast";
+import Swal from "sweetalert2";
 
 function App() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -129,6 +130,57 @@ function App() {
     }
   };
 
+  // eliminar usuario
+  const deleteUser = async () => {
+    await axios
+      .delete(process.env.REACT_APP_BACKEND_URL + `/api/user/${datos.userId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + datos.token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setLoggedIn(false);
+        cogoToast.success("User Deleted");
+        localStorage.setItem("datosUsuario", JSON.stringify({}));
+        localStorage.setItem("logged", JSON.stringify({ login: false }));
+        setDatos({});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const deleteFeedback = async () => {
+    await axios
+      .delete(
+        process.env.REACT_APP_BACKEND_URL +
+          `/api/feedback/${feedbackIdSelected}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + datos.token,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        getAllFeedbacks("");
+        getPlannedFeedbacks();
+        getProgressFeedbacks();
+        getLiveFeedbacks();
+        cogoToast.success("Feedback Deleted");
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          title: "Cannot detete feedback created by other users",
+          text: "Unauthorised",
+        });
+      });
+  };
+
   useEffect(() => {
     getAllFeedbacks(feedbackCategorySelected);
     getPlannedFeedbacks();
@@ -173,6 +225,7 @@ function App() {
               plannedFeedbacks={plannedFeedbacks}
               progressFeedbacks={progressFeedbacks}
               liveFeedbacks={liveFeedbacks}
+              deleteUser={deleteUser}
             />
           </Route>
           <Route path="/addFeedback">
@@ -194,6 +247,7 @@ function App() {
               getPlannedFeedbacks={getPlannedFeedbacks}
               getProgressFeedbacks={getProgressFeedbacks}
               getLiveFeedbacks={getLiveFeedbacks}
+              deleteFeedback={deleteFeedback}
             />
           </Route>
           <Route path="/comments">
@@ -205,6 +259,11 @@ function App() {
               feedbackSelectedInfo={feedbackSelectedInfo}
               feedbackIdSelected={feedbackIdSelected}
               getSelectedFeedback={getSelectedFeedback}
+              getAllFeedbacks={getAllFeedbacks}
+              getPlannedFeedbacks={getPlannedFeedbacks}
+              getProgressFeedbacks={getProgressFeedbacks}
+              getLiveFeedbacks={getLiveFeedbacks}
+              setFeedbackInfoSelected={setFeedbackInfoSelected}
             />
           </Route>
           <Route path="/roadmap">

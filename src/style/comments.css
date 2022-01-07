@@ -57,6 +57,10 @@ img {
     margin-bottom: 1.5rem;
 }
 
+.comments div:nth-of-type(2) {
+    flex-grow: 2;
+}
+
 .comments_reply {
     padding: 0 2rem 0 6rem;
 }

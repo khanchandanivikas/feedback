@@ -23,6 +23,7 @@ const Feedbacks = (props) => {
   const getPlannedFeedbacks = props.getPlannedFeedbacks;
   const getProgressFeedbacks = props.getProgressFeedbacks;
   const getLiveFeedbacks = props.getLiveFeedbacks;
+  const deleteUser = props.deleteUser;
 
   const animation = {
     hidden: { opacity: 0 },
@@ -46,6 +47,7 @@ const Feedbacks = (props) => {
           gestionarLogout={gestionarLogout}
           datos={datos}
           loggedIn={loggedIn}
+          deleteUser={deleteUser}
         />
         <Categories
           feedbackCategorySelected={feedbackCategorySelected}

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import cogoToast from "cogo-toast";
+import Swal from "sweetalert2";
 import "../style/editFeedback.css";
 
 const EditFeedback = (props) => {
@@ -16,6 +17,7 @@ const EditFeedback = (props) => {
   const getLiveFeedbacks = props.getLiveFeedbacks;
   const feedbackIdSelected = props.feedbackIdSelected;
   const setFeedbackInfoSelected = props.setFeedbackInfoSelected;
+  const deleteFeedback = props.deleteFeedback;
   const [title, setTitle] = useState(feedbackSelectedInfo.title);
   const [category, setCategory] = useState(feedbackSelectedInfo.category);
   const [status, setStatus] = useState(feedbackSelectedInfo.status);
@@ -71,6 +73,25 @@ const EditFeedback = (props) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleDeleteFeedback = (e) => {
+    e.preventDefault();
+    Swal.fire({
+      title: "Are you sure you want to delete this feedback?",
+      text: "This action cannot be reverted",
+      showCancelButton: true,
+      cancelButtonText: "Cancel",
+      cancelButtonColor: "#4158D0",
+      confirmButtonColor: "#d73737",
+      confirmButtonText: "Delete Feedback",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteFeedback().then(() => {
+          history.push("/");
+        });
+      }
+    });
   };
 
   const animation = {
@@ -140,7 +161,9 @@ const EditFeedback = (props) => {
             rows="10"
           ></textarea>
           <div className="buttons">
-            <button className="btn-delete">Delete</button>
+            <button onClick={handleDeleteFeedback} className="btn-delete">
+              Delete
+            </button>
             <div>
               <button
                 onClick={() => history.push("/comments")}
