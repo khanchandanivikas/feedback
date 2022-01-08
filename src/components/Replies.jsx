@@ -25,7 +25,10 @@ const Replies = (props) => {
               <div>
                 <h4>{reply.creatorName}</h4>
                 <p>@{reply.creatorUserName}</p>
-                <p>{reply.details}</p>
+                <p>
+                  <span>{`@${reply.inResponseToUser}`}</span>{" "}
+                  {`${reply.details}`}
+                </p>
               </div>
               <div>
                 {replBoxIndex !== null ? (

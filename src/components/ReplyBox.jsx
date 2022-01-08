@@ -27,7 +27,7 @@ const ReplyBox = (props) => {
           details: details,
           inResponseToUser: comment.creator.userName,
           creator: datos.userId,
-          creatorName: datos.userName,
+          creatorName: datos.name,
           creatorUserName: datos.userName,
           creatorAvatar: datos.avatar,
           comment_ref: comment._id,

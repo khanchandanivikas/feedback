@@ -11,7 +11,6 @@ const ReplyReplyBox = (props) => {
   let history = useHistory();
   const reply = props.reply;
   const comment = props.comment;
-  console.log(comment)
   const datos = props.datos;
   const loggedIn = props.loggedIn;
   const toggleReplyBox = props.toggleReplyBox;
@@ -29,7 +28,7 @@ const ReplyReplyBox = (props) => {
           details: details,
           inResponseToUser: reply.creatorUserName,
           creator: datos.userId,
-          creatorName: datos.userName,
+          creatorName: datos.name,
           creatorUserName: datos.userName,
           creatorAvatar: datos.avatar,
           comment_ref: reply.comment_ref,

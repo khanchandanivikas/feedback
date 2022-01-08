@@ -27,8 +27,6 @@ function App() {
   // datos  a la hora del login y alta userId y token
   const [datos, setDatos] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  // token
-  // const [token, setToken] = useState("");
   // comments
   const [feedbackIdSelected, setFeedbackIdSelected] = useState("");
   // the comments of the feedback
@@ -111,6 +109,7 @@ function App() {
       "datosUsuario",
       JSON.stringify({
         userId: dato.userId,
+        name: dato.name,
         userName: dato.userName,
         email: dato.email,
         avatar: dato.avatar,

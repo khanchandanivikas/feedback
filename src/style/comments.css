@@ -61,6 +61,12 @@ img {
     flex-grow: 2;
 }
 
+.comments_reply div:nth-of-type(2) p:nth-of-type(2) span {
+    color: #ad1fea;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
 .comments_reply {
     padding: 0 2rem 0 6rem;
 }
