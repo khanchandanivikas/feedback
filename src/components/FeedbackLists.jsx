@@ -138,6 +138,7 @@ const FeedbackLists = (props) => {
                       category: feedback.category,
                       comments: feedback.comments,
                       status: feedback.status,
+                      likes: feedback.likes
                     })
                   );
                   localStorage.setItem(
@@ -148,7 +149,7 @@ const FeedbackLists = (props) => {
                   );
                   setTimeout(() => {
                     history.push("/comments");
-                  }, 700);
+                  }, 800);
                 }}
                 className="link"
               >

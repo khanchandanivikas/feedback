@@ -92,6 +92,7 @@ const Comments = (props) => {
               category: response.data.feedback.category,
               comments: response.data.feedback.comments,
               status: response.data.feedback.status,
+              likes: response.data.feedback.likes,
             })
           );
           cogoToast.success("Disliked");
@@ -113,10 +114,11 @@ const Comments = (props) => {
       });
     }
   };
-
-  const [reply, setReply] = useState(false);
-  const toggleReply = () => {
-    setReply(!reply);
+  const [boxIndex, setBoxIndex] = useState(null);
+  console.log(boxIndex);
+  // const [reply, setReply] = useState(false);
+  const toggleReply = (index) => {
+    setBoxIndex(index);
   };
 
   const [details, setDetails] = useState("");
@@ -184,6 +186,7 @@ const Comments = (props) => {
       });
     }
   };
+  const feedbackVotes = JSON.parse(localStorage.getItem("feedbackInfo"));
 
   return (
     <motion.div
@@ -205,29 +208,27 @@ const Comments = (props) => {
         </div>
         {/* feedback title */}
         <div className="feedback-single">
-            {feedbackSelectedInfo.likes.includes(datos.userId) && datos ? (
-              <div
-                onClick={() =>
-                  dislikeFeedback(feedbackSelectedInfo._id, datos.userId)
-                }
-                className="feedback-downvote"
-              >
-                <i className="fas fa-chevron-up"></i>
-                <button className="downvote">
-                  {feedbackSelectedInfo.votes}
-                </button>
-              </div>
-            ) : (
-              <div
-                onClick={() =>
-                  likeFeedback(feedbackSelectedInfo._id, datos.userId)
-                }
-                className="feedback-upvote"
-              >
-                <i className="fas fa-chevron-up"></i>
-                <button className="upvote">{feedbackSelectedInfo.votes}</button>
-              </div>
-            )}
+          {feedbackVotes.likes.includes(datos.userId) && datos ? (
+            <div
+              onClick={() =>
+                dislikeFeedback(feedbackSelectedInfo._id, datos.userId)
+              }
+              className="feedback-downvote"
+            >
+              <i className="fas fa-chevron-up"></i>
+              <button className="downvote">{feedbackSelectedInfo.votes}</button>
+            </div>
+          ) : (
+            <div
+              onClick={() =>
+                likeFeedback(feedbackSelectedInfo._id, datos.userId)
+              }
+              className="feedback-upvote"
+            >
+              <i className="fas fa-chevron-up"></i>
+              <button className="upvote">{feedbackSelectedInfo.votes}</button>
+            </div>
+          )}
           <div>
             <Link to="/comments">
               <h3 className="link">{feedbackSelectedInfo.title}</h3>
@@ -248,7 +249,6 @@ const Comments = (props) => {
         <div className="comment-container">
           <h3>{feedbackSelected.length} Comments</h3>
           {feedbackSelected.map((comment) => {
-            console.log(feedbackSelected.indexOf(comment));
             return (
               <div key={comment._id}>
                 <div className="comments">
@@ -261,10 +261,24 @@ const Comments = (props) => {
                     <p>{comment.details}</p>
                   </div>
                   <div>
-                    <h4 onClick={toggleReply}>Reply</h4>
+                    {boxIndex !== null ? (
+                      <h4 onClick={() => toggleReply(null)}>Reply</h4>
+                    ) : (
+                      <h4
+                        onClick={() =>
+                          toggleReply(feedbackSelected.indexOf(comment))
+                        }
+                      >
+                        Reply
+                      </h4>
+                    )}
                   </div>
                 </div>
-                <AnimatePresence>{reply ? <ReplyBox /> : null}</AnimatePresence>
+                <AnimatePresence>
+                  {feedbackSelected.indexOf(comment) === boxIndex ? (
+                    <ReplyBox />
+                  ) : null}
+                </AnimatePresence>
                 {comment.replies.length > 0 && (
                   <Replies key={comment._id} comment={comment} />
                 )}

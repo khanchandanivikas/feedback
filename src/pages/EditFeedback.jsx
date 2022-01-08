@@ -61,6 +61,7 @@ const EditFeedback = (props) => {
             category: response.data.feedback.category,
             comments: response.data.feedback.comments,
             status: response.data.feedback.status,
+            likes: response.data.feedback.likes
           })
         );
         getAllFeedbacks("");

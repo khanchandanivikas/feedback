@@ -154,6 +154,10 @@ img {
         margin-right: 5px;
     }
 
+    .reply-form textarea {
+        margin-left: 1rem;
+    }
+
     .comments div:nth-child(3) h4,
     .comments_reply div:nth-child(3) h4 {
         font-size: 0.8rem;

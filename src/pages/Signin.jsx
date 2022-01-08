@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import "../style/signin.css";
 import cogoToast from "cogo-toast";
+import Swal from "sweetalert2";
 
 const Signin = (props) => {
   let history = useHistory();
@@ -30,6 +31,11 @@ const Signin = (props) => {
       })
       .catch((error) => {
         console.log(error.response.data);
+        Swal.fire({
+          icon: "error",
+          title: "Validation error",
+          text: "Please check the datas",
+        });
       });
   };
 
