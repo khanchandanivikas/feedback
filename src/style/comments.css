@@ -75,6 +75,10 @@ img {
     width: 25%;
 }
 
+.comments_reply div:nth-child(2) {
+    flex-grow: 2;
+}
+
 .comments div:nth-child(2) p:nth-child(1),
 .comments_reply div:nth-child(2) p:nth-child(1) {
     margin-top: 10px;

@@ -1,37 +1,63 @@
 import React from "react";
 import { useState } from "react";
-import ReplyBox from "../components/ReplyBox";
+import ReplyReplyBox from "../components/ReplyReplyBox";
 import { AnimatePresence } from "framer-motion";
 
 const Replies = (props) => {
   const comment = props.comment;
-  const [replyReply, setReplyReply] = useState(false);
-  const toggleReply = () => {
-    setReplyReply(!replyReply);
+  const datos = props.datos;
+  const loggedIn = props.loggedIn;
+  const getSelectedFeedback = props.getSelectedFeedback;
+  const [replBoxIndex, setReplyBoxIndex] = useState(null);
+  const toggleReplyBox = (index) => {
+    setReplyBoxIndex(index);
   };
 
   return (
     <div className="comment-container">
-      <div className="comments_reply">  
-        <div>
-          <img src={comment.creator.avatar} alt="avater" />
-        </div>
-        <div>
-          <h4>{comment.creator.name}</h4>
-          <p>@{comment.creator.userName}</p>
-          {comment.replies.map((reply) => {
-            return (
-              <p key={reply._id}>{reply.details}</p>
-            );
-          })}
-        </div>
-        <div>
-          <h4 onClick={toggleReply}>Reply</h4>
-        </div>
-      </div>
-      <div style={{ paddingLeft: "6rem" }}>
-        <AnimatePresence>{replyReply ? <ReplyBox /> : null}</AnimatePresence>
-      </div>
+      {comment.replies.map((reply) => {
+        return (
+          <div key={reply._id}>
+            <div className="comments_reply">
+              <div>
+                <img src={reply.creatorAvatar} alt="avater" />
+              </div>
+              <div>
+                <h4>{reply.creatorName}</h4>
+                <p>@{reply.creatorUserName}</p>
+                <p>{reply.details}</p>
+              </div>
+              <div>
+                {replBoxIndex !== null ? (
+                  <h4 onClick={() => toggleReplyBox(null)}>Reply</h4>
+                ) : (
+                  <h4
+                    onClick={() =>
+                      toggleReplyBox(comment.replies.indexOf(reply))
+                    }
+                  >
+                    Reply
+                  </h4>
+                )}
+              </div>
+            </div>
+            <div style={{ paddingLeft: "6rem" }}>
+              <AnimatePresence>
+                {comment.replies.indexOf(reply) === replBoxIndex ? (
+                  <ReplyReplyBox
+                    reply={reply}
+                    comment={comment}
+                    loggedIn={loggedIn}
+                    datos={datos}
+                    getSelectedFeedback={getSelectedFeedback}
+                    toggleReplyBox={toggleReplyBox}
+                  />
+                ) : null}
+              </AnimatePresence>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

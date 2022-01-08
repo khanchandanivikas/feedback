@@ -104,6 +104,7 @@ const Progress = (props) => {
                         category: progressFeedback.category,
                         comments: progressFeedback.comments,
                         status: progressFeedback.status,
+                        likes: progressFeedback.likes,
                       })
                     );
                     localStorage.setItem(
@@ -121,7 +122,7 @@ const Progress = (props) => {
                 </h5>
               </Link>
               <p>{progressFeedback.details}</p>
-              <button class="btn-category">{progressFeedback.category}</button>
+              <button className="btn-category">{progressFeedback.category}</button>
               <div className="stats">
                 {progressFeedback.likes.includes(datos.userId) ? (
                   <div

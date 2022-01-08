@@ -7,34 +7,36 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../style/replyBox.css";
 
-const ReplyBox = (props) => {
+const ReplyReplyBox = (props) => {
   let history = useHistory();
+  const reply = props.reply;
   const comment = props.comment;
+  console.log(comment)
   const datos = props.datos;
   const loggedIn = props.loggedIn;
-  const toggleReply = props.toggleReply;
+  const toggleReplyBox = props.toggleReplyBox;
   const getSelectedFeedback = props.getSelectedFeedback;
   const [details, setDetails] = useState("");
   const handleDetails = (e) => {
     setDetails(e.target.value);
   };
   // create comment reply
-  const createCommentReply = async (e) => {
+  const createReplyReply = async (e) => {
     e.preventDefault();
     if (loggedIn) {
       await axios
         .post(process.env.REACT_APP_BACKEND_URL + "/api/reply/", {
           details: details,
-          inResponseToUser: comment.creator.userName,
+          inResponseToUser: reply.creatorUserName,
           creator: datos.userId,
           creatorName: datos.userName,
           creatorUserName: datos.userName,
           creatorAvatar: datos.avatar,
-          comment_ref: comment._id,
+          comment_ref: reply.comment_ref,
         })
         .then((response) => {
           console.log(response);
-          toggleReply(null);
+          toggleReplyBox(null);
           setDetails("");
           getSelectedFeedback(comment.feedback_ref._id);
           cogoToast.success("Reply Created");
@@ -73,13 +75,13 @@ const ReplyBox = (props) => {
       exit="hidden"
       className="reply-form-container"
     >
-      <form action="" onSubmit={createCommentReply} className="reply-form">
+      <form action="" onSubmit={createReplyReply} className="reply-form">
         <textarea
           cols="30"
           rows="10"
           value={details}
           onChange={handleDetails}
-          placeholder={`Replying to @${comment.creator.userName}`}
+          placeholder={`Replying to @${reply.creatorUserName}`}
         ></textarea>
         <div>
           <button type="submit">
@@ -91,4 +93,4 @@ const ReplyBox = (props) => {
   );
 };
 
-export default ReplyBox;
+export default ReplyReplyBox;

@@ -47,7 +47,7 @@ const Live = (props) => {
     }
   };
 
-   const dislikeFeedback = async (feedbackId, userId) => {
+  const dislikeFeedback = async (feedbackId, userId) => {
     if (loggedIn) {
       await axios
         .patch(
@@ -104,6 +104,7 @@ const Live = (props) => {
                         category: liveFeedback.category,
                         comments: liveFeedback.comments,
                         status: liveFeedback.status,
+                        likes: liveFeedback.likes,
                       })
                     );
                     localStorage.setItem(
@@ -121,9 +122,9 @@ const Live = (props) => {
                 </h5>
               </Link>
               <p>{liveFeedback.details}</p>
-              <button class="btn-category">{liveFeedback.category}</button>
+              <button className="btn-category">{liveFeedback.category}</button>
               <div className="stats">
-              {liveFeedback.likes.includes(datos.userId) ? (
+                {liveFeedback.likes.includes(datos.userId) ? (
                   <div
                     onClick={() =>
                       dislikeFeedback(liveFeedback._id, datos.userId)
@@ -131,15 +132,11 @@ const Live = (props) => {
                     className="feedback-downvote-roadmap"
                   >
                     <i className="fas fa-chevron-up"></i>
-                    <button className="downvote">
-                      {liveFeedback.votes}
-                    </button>
+                    <button className="downvote">{liveFeedback.votes}</button>
                   </div>
                 ) : (
                   <div
-                    onClick={() =>
-                      likeFeedback(liveFeedback._id, datos.userId)
-                    }
+                    onClick={() => likeFeedback(liveFeedback._id, datos.userId)}
                     className="feedback-upvote-roadmap"
                   >
                     <i className="fas fa-chevron-up"></i>

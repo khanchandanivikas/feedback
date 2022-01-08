@@ -47,6 +47,7 @@ const Comments = (props) => {
               category: response.data.feedback.category,
               comments: response.data.feedback.comments,
               status: response.data.feedback.status,
+              likes: response.data.feedback.likes,
             })
           );
           cogoToast.success("Liked");
@@ -115,8 +116,6 @@ const Comments = (props) => {
     }
   };
   const [boxIndex, setBoxIndex] = useState(null);
-  console.log(boxIndex);
-  // const [reply, setReply] = useState(false);
   const toggleReply = (index) => {
     setBoxIndex(index);
   };
@@ -187,6 +186,7 @@ const Comments = (props) => {
     }
   };
   const feedbackVotes = JSON.parse(localStorage.getItem("feedbackInfo"));
+  const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
 
   return (
     <motion.div
@@ -208,7 +208,7 @@ const Comments = (props) => {
         </div>
         {/* feedback title */}
         <div className="feedback-single">
-          {feedbackVotes.likes.includes(datos.userId) && datos ? (
+          {feedbackVotes.likes.includes(datosRecuperar.userId) && datos ? (
             <div
               onClick={() =>
                 dislikeFeedback(feedbackSelectedInfo._id, datos.userId)
@@ -276,11 +276,23 @@ const Comments = (props) => {
                 </div>
                 <AnimatePresence>
                   {feedbackSelected.indexOf(comment) === boxIndex ? (
-                    <ReplyBox />
+                    <ReplyBox
+                      comment={comment}
+                      loggedIn={loggedIn}
+                      datos={datos}
+                      getSelectedFeedback={getSelectedFeedback}
+                      toggleReply={toggleReply}
+                    />
                   ) : null}
                 </AnimatePresence>
                 {comment.replies.length > 0 && (
-                  <Replies key={comment._id} comment={comment} />
+                  <Replies
+                    key={comment._id}
+                    comment={comment}
+                    loggedIn={loggedIn}
+                    datos={datos}
+                    getSelectedFeedback={getSelectedFeedback}
+                  />
                 )}
               </div>
             );

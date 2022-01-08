@@ -104,6 +104,7 @@ const Planned = (props) => {
                         category: plannedFeedback.category,
                         comments: plannedFeedback.comments,
                         status: plannedFeedback.status,
+                        likes: plannedFeedback.likes,
                       })
                     );
                     localStorage.setItem(
@@ -121,7 +122,7 @@ const Planned = (props) => {
                 </h5>
               </Link>
               <p>{plannedFeedback.details}</p>
-              <button class="btn-category">{plannedFeedback.category}</button>
+              <button className="btn-category">{plannedFeedback.category}</button>
               <div className="stats">
                 {plannedFeedback.likes.includes(datos.userId) ? (
                   <div
