@@ -24,6 +24,8 @@ const Feedbacks = (props) => {
   const getProgressFeedbacks = props.getProgressFeedbacks;
   const getLiveFeedbacks = props.getLiveFeedbacks;
   const deleteUser = props.deleteUser;
+  const sort = props.sort;
+  const handleSort = props.handleSort;
 
   const animation = {
     hidden: { opacity: 0 },
@@ -59,7 +61,7 @@ const Feedbacks = (props) => {
           liveFeedbacks={liveFeedbacks}
         />
       </div>
-      <Filter feedbacks={feedbacks} />
+      <Filter feedbacks={feedbacks} sort={sort} handleSort={handleSort} />
       <FeedbackLists
         key={feedbacks._id}
         feedbacks={feedbacks}

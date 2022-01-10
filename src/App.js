@@ -59,6 +59,36 @@ function App() {
     }
   };
 
+  const [sort, setSort] = useState("");
+  const handleSort = (e) => {
+    setSort(e.target.value);
+    showSortedFeedbacks(e.target.value);
+  };
+
+  const showSortedFeedbacks = (sortType) => {
+    switch (sortType) {
+      case "mostUpvotes": feedbacks.sort((a,b) => {
+        return parseFloat(b.votes) - parseFloat(a.votes);
+      })
+      break;
+      case "leastUpvotes": feedbacks.sort((a,b) => {
+        return parseFloat(a.votes) - parseFloat(b.votes);
+      })
+      break;
+      case "mostComments": feedbacks.sort((a,b) => {
+        return parseFloat(b.comments.length) - parseFloat(a.comments.length);
+      })
+      break;
+      case "leastComments": feedbacks.sort((a,b) => {
+        return parseFloat(a.comments.length) - parseFloat(b.comments.length);
+      })
+      break;
+      default: feedbacks.sort((a,b) => {
+        return parseFloat(b.votes) - parseFloat(a.votes);
+      });
+    }
+  }
+
   const getPlannedFeedbacks = async () => {
     try {
       const request = await axios.get(
@@ -225,6 +255,8 @@ function App() {
               progressFeedbacks={progressFeedbacks}
               liveFeedbacks={liveFeedbacks}
               deleteUser={deleteUser}
+              sort={sort}
+              handleSort={handleSort}
             />
           </Route>
           <Route path="/addFeedback">

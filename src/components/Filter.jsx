@@ -4,6 +4,8 @@ import "../style/filter.css";
 
 const Filter = (props) => {
   const feedbacks = props.feedbacks;
+  const sort = props.sort;
+  const handleSort = props.handleSort;
   return (
     <div className="filter-container">
       <h3>
@@ -11,11 +13,11 @@ const Filter = (props) => {
       </h3>
       <div className="sort">
         <p>Sort By : </p>
-        <select>
-          <option value="most upvotes">Most Upvotes</option>
-          <option value="least upvotes">Least Upvotes</option>
-          <option value="most comments">Most Comments</option>
-          <option value="least comments">Least Comments</option>
+        <select value={sort} onChange={handleSort}>
+          <option value="mostUpvotes">Most Upvotes</option>
+          <option value="leastUpvotes">Least Upvotes</option>
+          <option value="mostComments">Most Comments</option>
+          <option value="leastComments">Least Comments</option>
         </select>
       </div>
       <div>
