@@ -202,7 +202,7 @@ const Comments = (props) => {
               <i className="fas fa-chevron-left"></i>Go Back
             </p>
           </Link>
-          <button onClick={handleEditClick} className="btn-cancel">
+          <button onClick={handleEditClick} className="btn-cancel edit">
             Edit Feedback
           </button>
         </div>
