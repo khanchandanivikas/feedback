@@ -67,27 +67,32 @@ function App() {
 
   const showSortedFeedbacks = (sortType) => {
     switch (sortType) {
-      case "mostUpvotes": feedbacks.sort((a,b) => {
-        return parseFloat(b.votes) - parseFloat(a.votes);
-      })
-      break;
-      case "leastUpvotes": feedbacks.sort((a,b) => {
-        return parseFloat(a.votes) - parseFloat(b.votes);
-      })
-      break;
-      case "mostComments": feedbacks.sort((a,b) => {
-        return parseFloat(b.comments.length) - parseFloat(a.comments.length);
-      })
-      break;
-      case "leastComments": feedbacks.sort((a,b) => {
-        return parseFloat(a.comments.length) - parseFloat(b.comments.length);
-      })
-      break;
-      default: feedbacks.sort((a,b) => {
-        return parseFloat(b.votes) - parseFloat(a.votes);
-      });
+      case "mostUpvotes":
+        feedbacks.sort((a, b) => {
+          return parseFloat(b.votes) - parseFloat(a.votes);
+        });
+        break;
+      case "leastUpvotes":
+        feedbacks.sort((a, b) => {
+          return parseFloat(a.votes) - parseFloat(b.votes);
+        });
+        break;
+      case "mostComments":
+        feedbacks.sort((a, b) => {
+          return parseFloat(b.comments.length) - parseFloat(a.comments.length);
+        });
+        break;
+      case "leastComments":
+        feedbacks.sort((a, b) => {
+          return parseFloat(a.comments.length) - parseFloat(b.comments.length);
+        });
+        break;
+      default:
+        feedbacks.sort((a, b) => {
+          return parseFloat(b.votes) - parseFloat(a.votes);
+        });
     }
-  }
+  };
 
   const getPlannedFeedbacks = async () => {
     try {
@@ -216,6 +221,9 @@ function App() {
     getProgressFeedbacks();
     getLiveFeedbacks();
     const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
+    if (!datosRecuperar) {
+      localStorage.setItem("datosUsuario", JSON.stringify({}));
+    }
     if (datosRecuperar && datosRecuperar.token) {
       setDatos(datosRecuperar);
       setLoggedIn(true);
