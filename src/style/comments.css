@@ -37,10 +37,9 @@
     font-size: 0.9rem;
 }
 
-img {
-    border-radius: 50%;
-    width: 50%;
-}
+    .reply-img {
+        width: 80%;
+    }
 
 .comments {
     border-top: solid 1px #F0F1F5;
@@ -59,6 +58,7 @@ img {
 
 .comments div:nth-of-type(2) {
     flex-grow: 2;
+    width: 70%;
 }
 
 .comments_reply div:nth-of-type(2) p:nth-of-type(2) span {
@@ -162,6 +162,9 @@ img {
     img {
         min-width: 50px;
         margin-right: 5px;
+    }
+    .reply-img {
+        width: 50%;
     }
 
     .reply-form textarea {

@@ -187,7 +187,6 @@ const Comments = (props) => {
   };
   const feedbackVotes = JSON.parse(localStorage.getItem("feedbackInfo"));
   const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
-  const user = datosRecuperar.userId;
 
   return (
     <motion.div
@@ -209,10 +208,10 @@ const Comments = (props) => {
         </div>
         {/* feedback title */}
         <div className="feedback-single">
-          { datos && feedbackVotes.likes.includes(user) ? (
+          { feedbackVotes.likes.includes(datosRecuperar.userId) && datos ? (
             <div
               onClick={() =>
-                dislikeFeedback(feedbackSelectedInfo._id, datos.userId)
+                dislikeFeedback(feedbackIdSelected, datos.userId)
               }
               className="feedback-downvote"
             >
@@ -222,7 +221,7 @@ const Comments = (props) => {
           ) : (
             <div
               onClick={() =>
-                likeFeedback(feedbackSelectedInfo._id, datos.userId)
+                likeFeedback(feedbackIdSelected, datos.userId)
               }
               className="feedback-upvote"
             >

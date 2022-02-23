@@ -20,7 +20,7 @@ const Replies = (props) => {
           <div key={reply._id}>
             <div className="comments_reply">
               <div>
-                <img src={reply.creatorAvatar} alt="avater" />
+                <img className="reply-img" src={reply.creatorAvatar} alt="avater" />
               </div>
               <div>
                 <h4>{reply.creatorName}</h4>
