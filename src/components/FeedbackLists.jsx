@@ -26,8 +26,8 @@ const FeedbackLists = (props) => {
           process.env.REACT_APP_BACKEND_URL +
             `/api/feedback/increment/${feedbackId}/${userId}`
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getAllFeedbacks("");
           getPlannedFeedbacks();
           getProgressFeedbacks();
@@ -59,8 +59,8 @@ const FeedbackLists = (props) => {
           process.env.REACT_APP_BACKEND_URL +
             `/api/feedback/decrement/${feedbackId}/${userId}`
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getAllFeedbacks("");
           getPlannedFeedbacks();
           getProgressFeedbacks();

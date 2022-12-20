@@ -23,8 +23,8 @@ const Live = (props) => {
           process.env.REACT_APP_BACKEND_URL +
             `/api/feedback/increment/${feedbackId}/${userId}`
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getLiveFeedbacks();
           getAllFeedbacks("");
           cogoToast.success("Liked");
@@ -54,8 +54,8 @@ const Live = (props) => {
           process.env.REACT_APP_BACKEND_URL +
             `/api/feedback/decrement/${feedbackId}/${userId}`
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getLiveFeedbacks();
           getAllFeedbacks("");
           cogoToast.success("Disliked");

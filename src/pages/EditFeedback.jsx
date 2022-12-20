@@ -50,7 +50,7 @@ const EditFeedback = (props) => {
         }
       )
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setFeedbackInfoSelected(response.data.feedback);
         localStorage.setItem(
           "feedbackInfo",

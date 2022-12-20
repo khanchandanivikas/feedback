@@ -23,8 +23,8 @@ const Planned = (props) => {
           process.env.REACT_APP_BACKEND_URL +
             `/api/feedback/increment/${feedbackId}/${userId}`
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getPlannedFeedbacks();
           getAllFeedbacks("");
           cogoToast.success("Liked");
@@ -54,8 +54,8 @@ const Planned = (props) => {
           process.env.REACT_APP_BACKEND_URL +
             `/api/feedback/decrement/${feedbackId}/${userId}`
         )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getPlannedFeedbacks();
           getAllFeedbacks("");
           cogoToast.success("Disliked");

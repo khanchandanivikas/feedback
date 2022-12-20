@@ -32,8 +32,8 @@ const ReplyBox = (props) => {
           creatorAvatar: datos.avatar,
           comment_ref: comment._id,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           toggleReply(null);
           setDetails("");
           getSelectedFeedback(comment.feedback_ref._id);

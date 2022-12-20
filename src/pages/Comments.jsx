@@ -32,7 +32,7 @@ const Comments = (props) => {
             `/api/feedback/increment/${feedbackId}/${userId}`
         )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           getAllFeedbacks("");
           getPlannedFeedbacks();
           getProgressFeedbacks();
@@ -78,7 +78,7 @@ const Comments = (props) => {
             `/api/feedback/decrement/${feedbackId}/${userId}`
         )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           getAllFeedbacks("");
           getPlannedFeedbacks();
           getProgressFeedbacks();

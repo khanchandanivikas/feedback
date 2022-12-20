@@ -36,8 +36,8 @@ const AddFeedback = (props) => {
           details: details,
           creator: datos.userId,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           getAllFeedbacks("");
           getPlannedFeedbacks();
           getProgressFeedbacks();

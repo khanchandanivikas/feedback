@@ -173,8 +173,8 @@ function App() {
           Authorization: "Bearer " + datos.token,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        // console.log(response);
         setLoggedIn(false);
         cogoToast.success("User Deleted");
         localStorage.setItem("datosUsuario", JSON.stringify({}));
@@ -198,8 +198,8 @@ function App() {
           },
         }
       )
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        // console.log(response);
         getAllFeedbacks("");
         getPlannedFeedbacks();
         getProgressFeedbacks();
